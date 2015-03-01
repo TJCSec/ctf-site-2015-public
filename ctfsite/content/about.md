@@ -1,0 +1,5 @@
+title:			About TJCTF
+base_template:	subpages.tpl
+output_name:	about.tpl
+
+TJCTF is a Capture the Flag competition similar to [PicoCTF](http://picoctf.com/). It is targeted at high schoolers interested in computer science and cyber security. Each student will be able to participate on a team of up to 4 people and solve problems ranging from binary exploitation to cryptography. While CTFs are frequently branded as security competitions, the techniques they teach are often useful in many fields of computer science. Anyone who enjoys working with computers and solving challenging puzzles is encouraged to compete. While only American high school students (or younger) are eligible for prizes, anyone can play along for fun. We are opening registration soon, but in the meantime follow us on [Twitter](https://twitter.com/tjctf/) and join the [Facebook Group](https://www.facebook.com/TJCaptureTheFlag). If you have any comments or questions, feel free to contact us at [contact@tjctf.org](mailto:contact@tjctf.org).
