@@ -1,0 +1,11 @@
+title: TJCTF
+
+permalink: none
+
+defaults:
+    -
+        scope:
+            path: ''
+            values:
+                layout: 'default'
+
