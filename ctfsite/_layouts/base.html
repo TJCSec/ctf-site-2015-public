@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html lang="en">
+{% include head.html %}
+<body>
+    {{ content }}
+    {% for script in page.post_scripts %}
+        {% capture fixscript %}{% if script contains '://' or {{ script | truncate: 2 }} == '//' %}{% else %}{{ site.url }}{% endif %}{{ script }}{% endcapture %}
+        <script src="{{ fixscript }}"></script>
+    {% endfor %}
+</body>
+</html>
