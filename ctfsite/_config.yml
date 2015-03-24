@@ -4,8 +4,6 @@ permalink: none
 
 defaults:
     -
-        scope:
-            path: ''
-            values:
-                layout: 'default'
+        values:
+            layout: default
 
