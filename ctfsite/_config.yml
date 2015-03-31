@@ -1,5 +1,11 @@
+
+# Site variables
+
 title: TJCTF
 
+# Jekyll config
+
+encoding: utf-8
 permalink: none
 
 defaults:
@@ -7,3 +13,8 @@ defaults:
         values:
             layout: default
 
+kramdown:
+    auto_ids: true
+
+sass:
+    sass_dir: _sass
