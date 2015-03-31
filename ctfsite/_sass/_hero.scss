@@ -1,0 +1,120 @@
+@import "vars";
+@import "bourbon";
+
+.hero {
+    height: $hero-height;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+
+    h1 {
+        font-family: $font-laconic;
+        font-size: $hero-header-size;
+        color: #78F8FF;
+        text-shadow: 0px 0px 8px #64C4C4;
+        margin: 0;
+    }
+
+    .background {
+        position: absolute;
+        width: 100%;
+        height: $hero-height;
+        z-index: -10000;
+        @include radial-gradient(at 50% bottom, #0B6382 0%, #020C10 150%);
+    }
+
+    .crt {
+        background-image: url("/img/crt.png");
+        opacity: 0.01;
+
+        position: absolute;
+        width: 100%;
+        height: $hero-height;
+        
+        z-index: 10000;
+        pointer-events: none;
+    }
+
+    .logo {
+        width: $hero-logo-width;
+        margin-top: 50px;
+
+        @include filter(drop-shadow(0 0 3px #64C4C4));
+
+        @include user-select(none);
+        pointer-events: none;
+    }
+
+    .giant-logo {
+        width: 1500px;
+        position: absolute;
+        top: -300px;
+        left: 50%;
+        right: 50%;
+        margin-left: -750px;
+        opacity: 0.02;
+        z-index: -9999;
+    }
+
+    .info {
+        color: white;
+        font-family: $font-oxygen-mono;
+        font-size: 1em;
+        padding: 0 10px;
+
+        & > * {
+            margin-bottom: 0.9em;
+        }
+
+        .dates {
+            font-size: 1.3em;
+        }
+
+        .description {
+            max-width: 475px;
+            display: inline-block;
+        }
+
+        .email {
+            input {
+                margin-top: 0.9em;
+                padding: 5px;
+                font-size: 1em;
+                
+                background-color: #1A7A9D;
+                color: white;
+                
+                border: none;
+                outline: none;
+            }
+
+            input[type="submit"] {
+                background-color: #3E92B2;
+            }
+
+            input[type="submit"]:hover {
+                background-color: #4c9fbf;
+            }
+
+            input[type="submit"]:active {
+                background-color: #3486A5;
+            }
+
+            ::-webkit-input-placeholder {
+                color: white;
+            }
+
+            :-mox-placeholder {
+                color: white;
+            }
+
+            ::-moz-placeholder {
+                color: white;
+            }
+
+            :-ms-input-placeholder {
+                color: white;
+            }
+        }
+    }
+}
