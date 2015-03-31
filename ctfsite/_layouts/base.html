@@ -3,8 +3,6 @@
 {% include head.html %}
 <body>
     {{ content }}
-    {% for jsfile in page.post_scripts %}
-        <script src="{% unless jsfile contains '//' %}{{ site.url }}{% endif %}{{ jsfile }}"></script>
-    {% endfor %}
+    {% include scripts.html %}
 </body>
 </html>
