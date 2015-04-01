@@ -55,8 +55,26 @@
     display: none;
     max-width: em(700px);
 
-    h2 {
-        margin-top: 0;
+    .problem-head {
+        @include row;
+
+        #problem-name {
+            float: left;
+            margin: 0;
+        }
+
+        #problem-value {
+            float: right;
+            margin: 0;
+        }
+    }
+
+    form {
+        @include row;
+
+        #flag {
+            @include span-columns(9);
+        }
     }
 }
 
