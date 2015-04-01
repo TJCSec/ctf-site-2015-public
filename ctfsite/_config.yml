@@ -2,6 +2,27 @@
 # Site variables
 
 title: TJCTF
+menu:
+    -
+        text: Game
+        href: /problems
+        logged_in: true
+    -
+        text: Scoreboard
+        href: /scoreboard
+    - 
+        text: About
+        href: /about
+    -
+        text: Rules
+        href: /rules
+    -
+        text: Learn
+        href: /prepare
+    -
+        text: Settings
+        href: /settings
+        logged_in: true
 
 # Jekyll config
 
@@ -19,4 +40,4 @@ kramdown:
 sass:
     sass_dir: _sass
 
-gems: [bourbon]
+gems: [bourbon, neat]

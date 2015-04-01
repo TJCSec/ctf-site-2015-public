@@ -8,11 +8,8 @@
     overflow: hidden;
 
     h1 {
-        font-family: $font-laconic;
+        @extend h1.main-title;
         font-size: $hero-header-size;
-        color: #78F8FF;
-        text-shadow: 0px 0px 8px #64C4C4;
-        margin: 0;
     }
 
     .background {
@@ -58,7 +55,7 @@
 
     .info {
         color: white;
-        font-family: $font-oxygen-mono;
+        font-family: $font-mono;
         font-size: 1em;
         padding: 0 10px;
 

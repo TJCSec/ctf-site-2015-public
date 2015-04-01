@@ -3,11 +3,15 @@ $hero-height: 600px;
 $hero-header-size: 90px;
 $hero-logo-width: 230px;
 
-$font-oxygen-mono: "Oxygen Mono", sans-serif;
+$nav-height: 70px;
+$nav-pad: 7px;
+$nav-inner-height: $nav-height - 2 * $nav-pad;
+
+$font-mono: "Oxygen Mono", monospace, sans-serif;
 $font-laconic: "laconiclight", sans-serif;
-$font-lato: Lato,"Helvetica Neue",Arial,Helvetica,sans-serif;
+$font-main: "Open Sans", Helvetica, sans-serif;
 
 $color-highlight: #78F8FF;
 $color-header: #17799B;
 $color-text: rgba(0, 0, 0, 0.8);
-
+$color-link: #009FDA;

@@ -1,14 +1,42 @@
 ---
 ---
 
-@import "hero";
+@import "normalize";
+@import "vars";
 
 html {
-    font-size: 16px;
+    font-family: $font-main;
+    color: $color-text;
 }
 
 body {
+    font-family: $font-main;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: $color-header;
+    font-weight: 700;
+}
+
+a {
+    color: $color-link;
+}
+
+h1.main-title {
+    font-family: $font-laconic;
+    color: #78F8FF;
+    text-shadow: 0px 0px 8px #64C4C4;
     margin: 0;
-    padding: 0;
-    font-size: 16px;
+}
+
+@import "index";
+@import "hero";
+@import "nav";
+
+.main-content {
+    @include outer-container;
+
+    h1 {
+        @include fill-parent;
+    }
 }
