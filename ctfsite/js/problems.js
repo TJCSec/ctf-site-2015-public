@@ -136,9 +136,16 @@ jQuery(function($) {
         return {x: x, y: y, w: w, h: h, idx: i}
     }
 
+    var grid = $('#problem-grid')
+    var list = $('#problem-list')
+    var info = $('#problem-info')
+    var problemName = info.find('#problem-name')
+    var problemValue = info.find('#problem-value')
+    var problemDesc = info.find('#problem-description')
+    var pid = info.find('#pid')
+    var flagBox = info.find('#flag')
+
     function loadProblems(problems) {
-        var grid = $('#problem-grid')
-        var list = $('#problem-list')
         var pvalues = problems.map(function(p) {
             return p.score
         })
@@ -158,10 +165,12 @@ jQuery(function($) {
                 })
                 .addClass(problem.solved ? 'solved' : '')
                 .addClass(problem.category)
+                .addClass('problem')
 
             var listed = $('<li>')
                 .addClass(problem.category)
                 .addClass(problem.solved ? 'solved' : '')
+                .addClass('problem')
                 .text(problem.name)
 
             var listPoints = $('<span>')
@@ -170,9 +179,30 @@ jQuery(function($) {
 
             listed.append(listPoints)
 
+            gridded.data('problem', problem)
+            listed.data('problem', problem)
+
             grid.append(gridded)
             list.append(listed)
         })
+
+        $().add(list).add(grid).children('.problem').on('click', function(e) {
+            var problem = $(e.currentTarget).data('problem')
+
+            if (problem && !problem.disabled) {
+                showProblem(problem)
+            }
+        })
+    }
+
+    function showProblem(problem) {
+        problemName.text(problem.name)
+        problemValue.text(problem.score+'')
+        problemDesc.html(problem.description)
+        pid.val(problem.pid)
+        flagBox.val('')
+
+        $.featherlight(info)
     }
 
     $.ajax('/api/problems', {

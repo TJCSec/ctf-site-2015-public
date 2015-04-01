@@ -51,3 +51,15 @@
     }
 }
 
+#problem-info {
+    display: none;
+    max-width: em(700px);
+
+    h2 {
+        margin-top: 0;
+    }
+}
+
+.featherlight #problem-info {
+    display: block;
+}

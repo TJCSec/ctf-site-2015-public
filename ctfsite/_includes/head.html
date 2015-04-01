@@ -4,8 +4,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <title>{{ site.title }}{% if page.title %} - {{ page.title }}{% endif %}</title>
 
-    <link rel="stylesheet" type="text/css" href="{{ site.url }}/fonts/laconic/stylesheet.css">
-    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Oxygen+Mono|Open+Sans:400,700">
-    <!-- <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/semantic-ui/1.8.1/semantic.min.css"> -->
-    <link rel="stylesheet" type="text/css" href="{{ site.url }}/css/main.css">
+    <link rel="stylesheet" type="text/css" href="{{ site.url }}/fonts/laconic/stylesheet.css" />
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Oxygen+Mono|Open+Sans:400,700" />
+    <link rel="stylesheet" type="text/css" href="{{ site.url }}/css/main.css" />
+
+    {% for sheet in page.stylesheets %}
+        <link rel="stylesheet" type="text/css" href="{% unless sheet contains '//' %}{{ site.url }}{% endunless %}{{ sheet }}" />
+    {% endfor %}
 </head>

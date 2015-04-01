@@ -2,13 +2,23 @@
 layout: default
 post_scripts:
     - //rawgit.com/Strikeskids/pcg-random/patch-1/pcg-random.js
+    - //cdn.rawgit.com/noelboss/featherlight/1.2.3/release/featherlight.min.js
     - /js/problems.js
+stylesheets:
+    - //cdn.rawgit.com/noelboss/featherlight/1.2.3/release/featherlight.min.css
 ---
 
 <h1>Problems</h1>
 
+<div id="problem-info">
+    <h2 id="problem-name"></h2>
+    <div id="problem-value"></div>
+    <div id="problem-description"></div>
+    <form>
+        <input type="text" name="flag" id="flag" />
+        <input type="hidden" name="pid" id="pid" />
+        <button type="submit">Submit</button>
+    </form>
+</div>
 <div id="problem-grid"></div>
 <ul id="problem-list"></ul>
-<div id="problem-info">
-    
-</div>
