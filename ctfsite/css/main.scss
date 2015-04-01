@@ -9,10 +9,6 @@ html {
     color: $color-text;
 }
 
-body {
-    font-family: $font-main;
-}
-
 h1, h2, h3, h4, h5, h6 {
     color: $color-header;
     font-weight: 700;
@@ -32,6 +28,7 @@ h1.main-title {
 @import "index";
 @import "hero";
 @import "nav";
+@import "problems";
 
 .main-content {
     @include outer-container;
