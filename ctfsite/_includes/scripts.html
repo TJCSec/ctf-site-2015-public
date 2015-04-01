@@ -1,0 +1,5 @@
+<script src="{{ site.url }}/js/jquery.js"></script>
+<!-- <script src="//cdnjs.cloudflare.com/ajax/libs/semantic-ui/1.8.1/semantic.min.js"></script> -->
+{% for jsfile in page.post_scripts %}
+    <script src="{% unless jsfile contains '//' %}{{ site.url }}{% endunless %}{{ jsfile }}"></script>
+{% endfor %}

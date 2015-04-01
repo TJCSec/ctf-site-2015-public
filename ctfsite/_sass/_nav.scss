@@ -1,0 +1,44 @@
+header {
+    width: 100%;
+    @include radial-gradient(at 50% bottom, #0B6382 0%, #020C10 150%);
+    nav {
+        @include outer-container;
+
+        height: $nav-height;
+        @include pad($nav-pad);
+
+        a {
+            text-decoration: none;
+        }
+
+        .nav-home {
+            float: left;
+            margin-right: 40px;
+
+            h1 {
+                @extend h1.main-title;
+                font-size: $nav-inner-height;
+                margin-top: 4px;
+                float: left;
+            }
+
+            .logo {
+                height: $nav-inner-height;
+                float: left;
+                pointer-events: none;
+            }
+        }
+
+        ul.nav-links {
+            li {
+                float: left;
+                list-style-type: none;
+                margin-right: 40px;
+                a {
+                    @extend h1.main-title;
+                    font-size: 30px;
+                }
+            }
+        }
+    }
+}

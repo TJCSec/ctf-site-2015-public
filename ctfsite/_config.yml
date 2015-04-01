@@ -1,0 +1,43 @@
+
+# Site variables
+
+title: TJCTF
+menu:
+    -
+        text: Game
+        href: /problems
+        logged_in: true
+    -
+        text: Scoreboard
+        href: /scoreboard
+    - 
+        text: About
+        href: /about
+    -
+        text: Rules
+        href: /rules
+    -
+        text: Learn
+        href: /prepare
+    -
+        text: Settings
+        href: /settings
+        logged_in: true
+
+# Jekyll config
+
+encoding: utf-8
+permalink: none
+
+defaults:
+    -
+        values:
+            layout: default
+
+kramdown:
+    auto_ids: true
+
+sass:
+    sass_dir: _sass
+
+gems: [bourbon, neat]

@@ -1,6 +1,7 @@
-title:			Preparation Material
-base_template:	subpages.tpl
-output_name:	prepare.tpl
+---
+title: Preparation Material
+layout: default
+---
 
 There are a number of ways you can prepare for TJCTF. First and foremost, make sure you have access to a Linux machine. Many of the binaries we will distribute will only run on certain architectures. If you do not already have an installation, you can install a virtual machine under [VMware player](http://www.vmware.com/products/player) or [Virtual Box](https://www.virtualbox.org/). We recommend installing either good 'ol [Ubuntu](http://www.ubuntu.com/download), or the more powerful [Kali Linux](https://www.kali.org/downloads/).
 

@@ -1,0 +1,14 @@
+
+<header>
+    <nav>
+        <a href="/" class="nav-home">
+            <img src="{{ site.url }}/img/logo.svg" class="logo">
+            <h1>TJCTF</h1>
+        </a>
+        <ul class="nav-links">
+            {% for link in site.menu %}
+                <li><a href="{{ link.href }}">{{ link.text }}</a></li>
+            {% endfor %}
+        </ul>
+    </nav>
+</header>

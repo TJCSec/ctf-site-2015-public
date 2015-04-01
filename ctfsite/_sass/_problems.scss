@@ -1,0 +1,83 @@
+@import "vars";
+
+#problem-grid {
+    @include fill-parent;
+    height: $problem-grid-height;
+    
+    background-color: black;
+    position: relative;
+
+    div {
+        @extend .problem;
+        position: absolute;
+    }
+}
+
+#problem-list {
+    list-style: none;
+    padding: 0;
+
+    li {
+        @extend .problem;
+        @include span-columns(6);
+        @include omega(2n);
+
+        padding: 0 $problem-list-pad;
+        margin-bottom: $problem-list-pad;
+
+        font-size: $problem-list-font-size;
+        line-height: $problem-list-line-height;
+
+        vertical-align: middle;
+
+        border-radius: 5px;
+
+        .points {
+            display: inline-block;
+            float: right;
+        }
+    }
+}
+
+.problem {
+    @each $problem-type, $problem-color in $problem-types {
+        &.#{$problem-type} {
+            background-color: $problem-color;
+        }
+    }
+
+    &.solved {
+        background-color: green;
+    }
+}
+
+#problem-info {
+    display: none;
+    max-width: em(700px);
+
+    .problem-head {
+        @include row;
+
+        #problem-name {
+            float: left;
+            margin: 0;
+        }
+
+        #problem-value {
+            float: right;
+            margin: 0;
+        }
+    }
+
+    form {
+        @include row;
+
+        #flag {
+            @include span-columns(9);
+        }
+    }
+}
+
+.featherlight #problem-info {
+    display: block;
+}

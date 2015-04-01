@@ -1,0 +1,45 @@
+@import "bourbon";
+@import "neat";
+
+.main-content.index h1 {
+    text-align: center;
+}
+
+.section {
+    @include row;
+    padding: 0 2em;
+}
+
+.questions {
+    @extend .section;
+
+    & > div {
+        @include span-columns(3);
+        font-size: 0.85em;
+    }
+}
+
+.problem-types {
+    @extend .section;
+
+    & > div {
+        @include span-columns(3);
+
+        h3 {
+            text-align: center;
+        }
+    }
+}
+
+.prizes {
+    @extend .section;
+}
+
+.sponsors {
+    @extend .section;
+
+    .sponsor {
+        @include span-columns(3);
+        @include omega(4n);
+    }
+}
