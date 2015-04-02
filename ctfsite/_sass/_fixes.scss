@@ -1,0 +1,5 @@
+@import "bourbon";
+
+.featherlight-close-icon {
+    @include user-select(none);
+}
