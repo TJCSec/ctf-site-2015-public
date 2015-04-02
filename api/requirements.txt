@@ -6,4 +6,5 @@ pytest==2.5.2
 voluptuous==0.8.5
 gunicorn
 spur==0.3.11
+sendgrid==1.3.0
 line_profiler

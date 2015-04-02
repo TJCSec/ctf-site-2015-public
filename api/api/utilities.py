@@ -1,6 +1,7 @@
 """ Module for utilities such as emailing, password reset, etc """
 
 import smtplib
+import sendgrid
 import bcrypt
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
@@ -13,11 +14,16 @@ from voluptuous import Required, Length, Schema
 from datetime import datetime
 
 enable_email = False
+use_sendgrid = True
 smtp_url = ''
 email_username = ''
 email_password = ''
+sendgrid_username = ''
+sendgrid_password = ''
 from_addr = ''
 from_name = ''
+
+sg = None
 
 password_reset_request_schema = Schema({
     Required('username'): check(
@@ -34,7 +40,10 @@ password_reset_schema = Schema({
     )
 })
 
-def send_email(recipient, subject, body):
+def setup_sendgrid():
+    sg = sendgrid.SendGridClient(sendgrid_username, sendgrid_password, raise_errors=True)
+
+def send_email(recipient, subject, body, isHTML=False):
     """
     Send an email with the given body text and subject to the given recipient.
 
@@ -47,8 +56,26 @@ def send_email(recipient, subject, body):
         body: the body of the email
     """
 
-    #TODO: clean this up
-    if enable_email:
+    if not enable_email:
+        raise InternalException("Email is disabled. Not sending")
+        
+    if use_sendgrid:
+        if not sg:
+            setup_sendgrid()
+        msg = sendgrid.Mail()
+        msg.add_to(recipient)
+        msg.set_subject(subject)
+        msg.set_from(formataddr((from_name, from_addr)))
+        if isHTML:
+            msg.set_html(body)
+        else:
+            msg.set_text(body)
+        try:
+            sg.send(msg)
+        except sendgrid.SendGridError as e:
+            raise InternalException("Unable to send mail", e)
+    else:
+        # Clean up non-sendgrid
         msg = MIMEMultipart('alternative')
         msg['Subject'] = subject
         msg['From'] = formataddr((from_name, from_addr))
@@ -59,8 +86,6 @@ def send_email(recipient, subject, body):
         s.login(email_username, email_password)
         s.sendmail(from_addr, recipient, msg.as_string())
         s.quit()
-    else:
-        print("Emailing is disabled, not sending.")
 
 def send_email_to_list(recipients, subject, body):
     """

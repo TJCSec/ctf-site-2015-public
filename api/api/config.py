@@ -91,9 +91,12 @@ shell_user_creation = "sudo useradd -m {username} -p {password}"
 """ EMAIL (SMTP) """
 
 api.utilities.enable_email = False
+api.utilities.use_sendgrid = True
 api.utilities.smtp_url = ""
 api.utilities.email_username = ""
 api.utilities.email_password = ""
+api.utilities.sendgrid_username = ""
+api.utilities.sendgrid_password = ""
 api.utilities.from_addr = ""
 api.utilities.from_name = ""
 
