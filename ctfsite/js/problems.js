@@ -1,6 +1,4 @@
 jQuery(function($) {
-    window.tjctf = window.tjctf || {}
-
     var rand = new PcgRandom()
 
     function sum(array) {
@@ -208,8 +206,8 @@ jQuery(function($) {
     $.ajax('/api/problems', {
         dataType: 'json',
         success: function(json, status, xhr) {
-            window.tjctf.problems = json.data
-            loadProblems(window.tjctf.problems)
+            tjctf.problems = json.data
+            loadProblems(tjctf.problems)
         },
     })
 })
