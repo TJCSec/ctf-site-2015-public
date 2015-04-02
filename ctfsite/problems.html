@@ -1,4 +1,5 @@
 ---
+title: Problems
 layout: default
 post_scripts:
     - //rawgit.com/Strikeskids/pcg-random/patch-1/pcg-random.js
@@ -7,20 +8,24 @@ post_scripts:
 stylesheets:
     - //cdn.rawgit.com/noelboss/featherlight/1.2.3/release/featherlight.min.css
 ---
-
-<h1>Problems</h1>
-
 <div id="problem-info">
     <div class="problem-head">
         <h2 id="problem-name"></h2>
         <h3 id="problem-value"></h3>
     </div>
     <div id="problem-description"></div>
-    <form>
+    <form id="problem-form">
         <input type="text" name="flag" id="flag" />
         <input type="hidden" name="pid" id="pid" />
         <button type="submit" id="submit-flag">Submit</button>
     </form>
+</div>
+<div id="achievement-info">
+    <img id="achievement-image" />
+    <div id="achievement-data">
+        <h2 id="achievement-name"></h2>
+        <div id="achievement-description"></div>
+    </div>
 </div>
 <div id="problem-grid"></div>
 <ul id="problem-list"></ul>
