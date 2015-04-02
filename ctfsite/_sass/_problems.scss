@@ -51,8 +51,32 @@
     }
 }
 
-#problem-info {
+.featherlight-content-source {
     display: none;
+    .featherlight & {
+        display: block;
+    }
+}
+
+#achievement-info {
+    @extend .featherlight-content-source;
+    max-width: em(700px);
+
+    #achievement-image {
+        @include span-columns(3);
+    }
+
+    #achievement-data {
+        @include span-columns(9);
+
+        #achievement-name {
+            margin: 0;
+        }
+    }
+}
+
+#problem-info {
+    @extend .featherlight-content-source;
     max-width: em(700px);
 
     .problem-head {
@@ -76,8 +100,4 @@
             @include span-columns(9);
         }
     }
-}
-
-.featherlight #problem-info {
-    display: block;
 }

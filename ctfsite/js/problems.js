@@ -137,9 +137,14 @@ jQuery(function($) {
     var grid = $('#problem-grid')
     var list = $('#problem-list')
     var info = $('#problem-info')
+    var achievementInfo = $('#achievement-info')
+    var form = $('#problem-form')
     var problemName = info.find('#problem-name')
     var problemValue = info.find('#problem-value')
     var problemDesc = info.find('#problem-description')
+    var achievementImage = achievementInfo.find('#achievement-image')
+    var achievementName = achievementInfo.find('#achievement-name')
+    var achievementDesc = achievementInfo.find('#achievement-description')
     var pid = info.find('#pid')
     var flagBox = info.find('#flag')
 
@@ -202,6 +207,50 @@ jQuery(function($) {
 
         $.featherlight(info)
     }
+
+    function showAchievement(achievement, config) {
+        achievementName.text(achievement.name)
+        achievementDesc.text(achievement.description)
+        achievementImage.attr('src', achievement.image)
+
+        $.featherlight(achievementInfo, config)
+    }
+
+    function showAchievements(achievements) {
+        achievements.reverse()
+        var show = achievements.reduce(function(prev, achievement) {
+            return showAchievement.bind(null, achievement, {afterClose: prev})
+        }, $.noop)
+
+        show()
+    }
+
+    function showNewAchievements() {
+        tjctf.apiQuery('GET', '/api/achievements')
+            .done(function(data) {
+                if (data.status) {
+                    var achievements = data.data.filter(function(achievement) {
+                        return !achievement.seen
+                    })
+                    setTimeout(showAchievements.bind(null, achievements), 1000)
+                }
+            })
+    }
+
+    form.on('submit', function(e) {
+        e.preventDefault()
+        tjctf.apiQuery('POST', '/api/problems/submit', {
+            pid: pid.val(),
+            key: flagBox.val(),
+        })
+            .done(function(data) {
+                tjctf.notify(data)
+                if (data.status) {
+                    $.featherlight.close()
+                }
+                showNewAchievements()
+            })
+    })
 
     $.ajax('/api/problems', {
         dataType: 'json',
