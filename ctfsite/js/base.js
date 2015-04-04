@@ -67,6 +67,16 @@ jQuery(function($) {
             })
     }
 
+    $.fn.serialize = function() {
+        var keys = {}
+        this.each(function() {
+            if (this.name && this.value) {
+                keys[this.name] = this.value
+            }
+        })
+        return keys
+    }
+
     $.fn.apiNotify = function(data, redirect, config) {
         config = config || {}
         config.className = notifyClass(data)
