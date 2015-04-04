@@ -1,0 +1,76 @@
+<form id="registration-form" name="registration-form">
+    <div id="user-information">
+        <div class="form-row">
+            <label for="firstname">First Name</label>
+            <input required type="text" id="firstname" name="firstname" placeholder="First Name" />
+            <label for="lastname">Last Name</label>
+            <input required type="text" id="lastname" name="lastname" placeholder="Last Name" class="end-row" />
+        </div>
+        <div class="form-row">
+            <label for="username">Username</label>
+            <input required type="text" id="username" name="username" placeholder="Username" />
+            <label for="password">Password</label>
+            <input required type="password" id="password" name="password" placeholder="Password" />
+        </div>
+        <div class="form-row">
+            <label for="email">Email</label>
+            <input required type="email" id="email" name="email" placeholder="Email" />
+        </div>
+        <div class="form-row">
+            <label for="background">Background</label>
+            <select required id="background" name="background">
+                {% for background in site.data.backgrounds %}
+                    <option value="{{ background[0] }}">{{ background[1] }}</option>
+                {% endfor %}
+            </select>
+            <label for="country">Country</label>
+            <select required id="country" name="country">
+                {% for country in site.data.countries %}
+                    <option value="{{ country.Code }}">{{ country.Name | escape }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="form-row">
+            <button type="button" class="team-style-button" value="team-create">Create a New Team</button>
+            <button type="button" class="team-style-button" value="team-join">Join an Existing Team</button>
+            <button type="button" class="team-style-button" value="team-teacher">Create a Teacher Account</button>
+        </div>
+    </div>
+    <input type="hidden" id="create-new-team" name="create-new-team" value="false" />
+    <input type="hidden" id="create-new-teacher" name="create-new-teacher" value="false" />
+    <div id="team-create-information" class="team-option-dropdown">
+        <div class="form-row">
+            <label for="team-name-new">Team Name</label>
+            <input type="text" id="team-name-new" name="team-name-new" placeholder="Team Name" />
+            <label for="team-password-new">Team Passphrase</label>
+            <input type="text" id="team-password-new" name="team-password-new" placeholder="Team Passphrase" />
+        </div>
+        <div class="form-row">
+            <label for="team-school-new">School</label>
+            <input type="text" id="team-school-new" name="team-school-new" placeholder="School" />
+        </div>
+        <div class="form-row">
+            <button type="submit">Register</button>
+        </div>
+    </div>
+    <div id="team-join-information" class="team-option-dropdown">
+        <div class="form-row">
+            <label for="team-name-existing">Team Name</label>
+            <input type="text" id="team-name-existing" name="team-name-existing" placeholder="Team Name" />
+            <label for="team-password-existing">Team Passphrase</label>
+            <input type="text" id="team-password-existing" name="team-password-existing" placeholder="Team Passphrase" />
+        </div>
+        <div class="form-row">
+            <button type="submit">Register</button>
+        </div>
+    </div>
+    <div id="team-teacher-information" class="team-option-dropdown">
+        <div class="form-row">
+            <label for="teacher-school">School</label>
+            <input type="text" id="teacher-school" name="teacher-school" placeholder="School" />
+        </div>
+        <div class="form-row">
+            <button type="submit">Register</button>
+        </div>
+    </div>
+</form>

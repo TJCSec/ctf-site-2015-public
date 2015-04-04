@@ -1,0 +1,10 @@
+student_el: Elementary School Student
+student_ms: Middle School Student
+student_hs: High School Student
+student_home: Homeschooled Student
+student_undergrad: Undergraduate
+student_grad: Graduate Student
+teacher: Teacher
+secprof: Security Professional
+hobbyist: CTF Hobbyist (non-Student)
+other: Other
