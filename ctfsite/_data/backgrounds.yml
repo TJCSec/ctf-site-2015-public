@@ -1,0 +1,34 @@
+-
+    value: student_el
+    name: Elementary School Student
+-
+    value: student_ms
+    name: Middle School Student
+-
+    value: student_hs
+    name: High School Student
+-
+    value: student_home
+    name: Homeschooled Student
+-
+    value: student_undergrad
+    name: Undergraduate
+-
+    value: student_grad
+    name: Graduate Student
+-
+    value: teacher
+    name: Teacher
+    teacher: true
+-
+    value: secprof
+    name: Security Professional
+    teacher: true
+-
+    value: hobbyist
+    name: CTF Hobbyist (non-Student)
+    teacher: true
+-
+    value: other
+    name: Other
+    teacher: true
