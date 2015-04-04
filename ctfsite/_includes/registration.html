@@ -20,7 +20,7 @@
             <label for="background">Background</label>
             <select required id="background" name="background">
                 {% for background in site.data.backgrounds %}
-                    <option value="{{ background[0] }}">{{ background[1] }}</option>
+                    <option value="{{ background.value }}" data-teacher="{% if background.teacher %}true{% endif %}">{{ background.name | escape }}</option>
                 {% endfor %}
             </select>
             <label for="country">Country</label>
@@ -31,9 +31,9 @@
             </select>
         </div>
         <div class="form-row">
-            <button type="button" class="team-style-button" value="team-create">Create a New Team</button>
-            <button type="button" class="team-style-button" value="team-join">Join an Existing Team</button>
-            <button type="button" class="team-style-button" value="team-teacher">Create a Teacher Account</button>
+            <button type="button" class="team-style-button" id="team-create-button" value="team-create">Create a New Team</button>
+            <button type="button" class="team-style-button" id="team-join-button" value="team-join">Join an Existing Team</button>
+            <button type="button" class="team-style-button" id="team-teacher-button" value="team-teacher">Create a Teacher Account</button>
         </div>
     </div>
     <input type="hidden" id="create-new-team" name="create-new-team" value="false" />
