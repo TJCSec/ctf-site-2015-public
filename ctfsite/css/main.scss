@@ -31,6 +31,7 @@ h1.main-title {
 @import "nav";
 @import "problems";
 @import "registration";
+@import "footer";
 
 .main-content {
     @include outer-container;
