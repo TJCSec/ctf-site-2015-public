@@ -72,45 +72,16 @@
             display: inline-block;
         }
 
-        .email {
-            input {
-                margin-top: 0.9em;
-                padding: 5px;
-                font-size: 1em;
-                
-                background-color: #1A7A9D;
-                color: white;
-                
-                border: none;
-                outline: none;
-            }
+        .register-link {
+            a {
+                text-decoration: none;
+                @extend h1.main-title;
+                font-size: $hero-header-size * 0.5;
 
-            input[type="submit"] {
-                background-color: #3E92B2;
-            }
-
-            input[type="submit"]:hover {
-                background-color: #4c9fbf;
-            }
-
-            input[type="submit"]:active {
-                background-color: #3486A5;
-            }
-
-            ::-webkit-input-placeholder {
-                color: white;
-            }
-
-            :-mox-placeholder {
-                color: white;
-            }
-
-            ::-moz-placeholder {
-                color: white;
-            }
-
-            :-ms-input-placeholder {
-                color: white;
+                background-color: #095065;
+                padding: 10px;
+                border-radius: 5px;
+                display: inline-block;
             }
         }
     }
