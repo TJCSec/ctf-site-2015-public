@@ -20,7 +20,7 @@
             <label for="background">Background</label>
             <select required id="background" name="background">
                 {% for background in site.data.backgrounds %}
-                    <option value="{{ background.value }}" data-teacher="{% if background.teacher %}true{% endif %}">{{ background.name | escape }}</option>
+                    <option value="{{ background.value }}">{{ background.name | escape }}</option>
                 {% endfor %}
             </select>
             <label for="country">Country</label>
@@ -33,11 +33,9 @@
         <div class="form-row">
             <button type="button" class="team-style-button" id="team-create-button" value="team-create">Create a New Team</button>
             <button type="button" class="team-style-button" id="team-join-button" value="team-join">Join an Existing Team</button>
-            <button type="button" class="team-style-button" id="team-teacher-button" value="team-teacher">Create a Teacher Account</button>
         </div>
     </div>
     <input type="hidden" id="create-new-team" name="create-new-team" value="false" />
-    <input type="hidden" id="create-new-teacher" name="create-new-teacher" value="false" />
     <div id="team-create-information" class="team-option-dropdown">
         <div class="form-row">
             <label for="team-name-new">Team Name</label>
@@ -59,15 +57,6 @@
             <input type="text" id="team-name-existing" name="team-name-existing" placeholder="Team Name" />
             <label for="team-password-existing">Team Passphrase</label>
             <input type="text" id="team-password-existing" name="team-password-existing" placeholder="Team Passphrase" />
-        </div>
-        <div class="form-row">
-            <button type="submit">Register</button>
-        </div>
-    </div>
-    <div id="team-teacher-information" class="team-option-dropdown">
-        <div class="form-row">
-            <label for="teacher-school">School</label>
-            <input type="text" id="teacher-school" name="teacher-school" placeholder="School" />
         </div>
         <div class="form-row">
             <button type="submit">Register</button>
