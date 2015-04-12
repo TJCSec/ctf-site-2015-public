@@ -4,7 +4,7 @@
             <label for="firstname">First Name</label>
             <input required type="text" id="firstname" name="firstname" placeholder="First Name" />
             <label for="lastname">Last Name</label>
-            <input required type="text" id="lastname" name="lastname" placeholder="Last Name" class="end-row" />
+            <input required type="text" id="lastname" name="lastname" placeholder="Last Name" />
         </div>
         <div class="form-row">
             <label for="username">Username</label>
@@ -31,8 +31,10 @@
             </select>
         </div>
         <div class="form-row">
-            <button type="button" class="team-style-button" id="team-create-button" value="team-create">Create a New Team</button>
-            <button type="button" class="team-style-button" id="team-join-button" value="team-join">Join an Existing Team</button>
+            <div class="form-buttons">
+                <button type="button" class="team-style-button" id="team-create-button" value="team-create">Create a New Team</button>
+                <button type="button" class="team-style-button" id="team-join-button" value="team-join">Join an Existing Team</button>
+            </div>
         </div>
     </div>
     <input type="hidden" id="create-new-team" name="create-new-team" value="false" />
@@ -48,7 +50,9 @@
             <input type="text" id="team-school-new" name="team-school-new" placeholder="School" />
         </div>
         <div class="form-row">
-            <button type="submit">Register</button>
+            <div class="form-buttons">
+                <button type="submit">Register</button>
+            </div>
         </div>
     </div>
     <div id="team-join-information" class="team-option-dropdown">
@@ -59,7 +63,9 @@
             <input type="text" id="team-password-existing" name="team-password-existing" placeholder="Team Passphrase" />
         </div>
         <div class="form-row">
-            <button type="submit">Register</button>
+            <div class="form-buttons">
+                <button type="submit">Register</button>
+            </div>
         </div>
     </div>
 </form>
