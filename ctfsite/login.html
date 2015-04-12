@@ -1,0 +1,29 @@
+---
+layout: default
+post_scripts:
+    - /js/login.js
+redirects:
+    -
+        key: logged_in
+        state: true
+        url: /
+        hard: false
+---
+
+<div id="login-form-box">
+    <form id="login-form">
+        <div class="form-row">
+            <label for="username">Username</label>
+            <input required type="text" id="username" name="username" placeholder="Username" />
+        </div>
+        <div class="form-row">
+            <label for="password">Password</label>
+            <input required type="password" id="password" name="password" placeholder="Password" />
+        </div>
+        <div class="form-row">
+            <div class="form-buttons">
+                <button type="submit">Login</button>
+            </div>
+        </div>
+    </form>
+</div>
