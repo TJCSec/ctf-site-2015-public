@@ -252,11 +252,9 @@ jQuery(function($) {
             })
     })
 
-    $.ajax('/api/problems', {
-        dataType: 'json',
-        success: function(json, status, xhr) {
+    tjctf.apiQuery('GET', '/api/problems')
+        .done(function(json) {
             tjctf.problems = json.data
             loadProblems(tjctf.problems)
-        },
-    })
+        })
 })

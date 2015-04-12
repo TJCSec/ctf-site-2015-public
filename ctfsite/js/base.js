@@ -19,8 +19,16 @@ jQuery(function($) {
         }
     }
 
-    B.prototype.notify = function(data, redirect) {
-        $.apiNotify(data, redirect)
+    B.prototype.notify = function(data, redirect, config) {
+        config = config || {}
+        config.className = notifyClass(data)
+        var ret = $.notify(data.message, config)
+        if (redirect && config.className === 'success') {
+            setTimeout(function() {
+                window.location = redirect
+            }, 1000)
+        }
+        return ret
     }
 
     B.prototype.apiQuery = function(type, url, data) {
@@ -28,7 +36,7 @@ jQuery(function($) {
         if (type === 'POST') {
             data.token = $.cookie('token')
         }
-        $.ajax({
+        return $.ajax({
             cache: false,
             dataType: 'json',
             url: url,

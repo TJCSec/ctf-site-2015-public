@@ -1,43 +1,41 @@
-var schoolLim = null;
-var boardCache;
-$(document).ready(function() {
-	spark = new Spark(Handlebars);
+jQuery(function($) {
+    var schoolLim, boardCache, renderScoreboard, lim, getScoreboard, spark
+    
+    schoolLim = null;
+    spark = new Spark(Handlebars);
 
-	renderScoreboard = function(board) {
-		board = board || boardCache;
-		var score_entry = Handlebars.compile($("#score-entry").html());
-		board.schoolLim = schoolLim;
-		$("#body").html(score_entry(board))
-	}
-	getScoreboard();
+    renderScoreboard = function(board) {
+        board = board || boardCache;
+        var score_entry = Handlebars.compile($("#score-entry").html());
+        board.schoolLim = schoolLim;
+        $("#body").html(score_entry(board))
+    }
+    getScoreboard();
+
+    tjctf.scoreboardLimit = function(school) {
+        schoolLim = school || null;
+        renderScoreboard();
+    }
+
+    getScoreboard = function(cb) {
+        tjctf.apiQuery('GET', '/api/stats/scoreboard')
+            .done(function(json) {
+                boardCache = json;      //change to public when api is working
+                renderScoreboard(json);                
+            })
+    }
+
+    Handlebars.registerHelper("inc", function(value, options) {
+        return parseInt(value)+1;
+    })
+
+    Handlebars.registerHelper("display", function(school, options) {
+        if (schoolLim == null || schoolLim == school) {
+            return options.fn(this);
+        }
+    })
+
+    Handlebars.registerHelper("parity", function(number, options) {
+        return ["even","odd"][parseInt(number)%2];
+    })
 })
-
-lim = function(school) {
-	schoolLim = school || null;
-	renderScoreboard();
-}
-
-getScoreboard = function(cb) {
-	var xhr = new XMLHttpRequest();
-	xhr.open("GET","/api/stats/scoreboard")
-	xhr.onload = function() {
-		boardCache = JSON.parse(xhr.response).data.groups[0];      //change to public when api is working
-		renderScoreboard(JSON.parse(xhr.response).data.groups[0]);
-	}
-	xhr.send();
-}
-
-Handlebars.registerHelper("inc", function(value, options) {
-	return parseInt(value)+1;
-})
-
-Handlebars.registerHelper("display", function(school, options) {
-	if (schoolLim == null || schoolLim == school) {
-		return options.fn(this);
-	}
-})
-
-Handlebars.registerHelper("parity", function(number, options) {
-	return ["even","odd"][parseInt(number)%2];
-})
-
