@@ -9,6 +9,10 @@ html {
     color: $color-text;
 }
 
+body:not(.logged-in) .be-logged-in {
+    display: none !important;
+}
+
 h1, h2, h3, h4, h5, h6 {
     color: $color-header;
     font-weight: 700;
@@ -37,6 +41,13 @@ h1.main-title {
 
 .main-content {
     @include outer-container;
+
+    box-sizing: content-box;
+    padding: 0 2em;
+    
+    & > * {
+        box-sizing: border-box;
+    }
 
     h1 {
         @include fill-parent;
