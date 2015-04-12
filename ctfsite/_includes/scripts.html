@@ -7,7 +7,7 @@
 {% endfor %}
 
 <script type="text/javascript">
-    {% for redirection in page.redirect %}
+    {% for redirection in page.redirects %}
         {% if redirection == 'not_logged_in' %}
             tjctf.redirectIfUserIs('logged_in', false, '/login')
         {% else %}
