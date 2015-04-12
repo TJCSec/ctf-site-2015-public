@@ -1,10 +1,10 @@
 jQuery(function($) {
-    var schoolLim, boardCache, renderScoreboard, lim, getScoreboard, spark
+    var schoolLim, boardCache, lim, spark
     
     schoolLim = null;
     spark = new Spark(Handlebars);
 
-    renderScoreboard = function(board) {
+    function renderScoreboard(board) {
         board = board || boardCache;
         var score_entry = Handlebars.compile($("#score-entry").html());
         board.schoolLim = schoolLim;
@@ -17,11 +17,11 @@ jQuery(function($) {
         renderScoreboard();
     }
 
-    getScoreboard = function(cb) {
+    function getScoreboard(cb) {
         tjctf.apiQuery('GET', '/api/stats/scoreboard')
             .done(function(json) {
-                boardCache = json;      //change to public when api is working
-                renderScoreboard(json);                
+                boardCache = json.data.groups[0];      //change to public when api is working
+                renderScoreboard(json.data.groups[0]);
             })
     }
 
