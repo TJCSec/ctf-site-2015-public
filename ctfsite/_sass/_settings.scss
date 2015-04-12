@@ -1,28 +1,14 @@
+@import "forms";
+
 #team-settings, #user-settings {
     @include span-columns(6);
 
     h2:first-child {
         margin-top: 0;
     }
-}
 
-#change-password-form {
-    label {
-        @include span-columns(4);
-    }
-
-    input, select {
-        @include span-columns(8);
-    }
-
-    button {
-        @include span-columns(6);
-        @include shift(3);
-    }
-
-    .form-row {
-        @include row;
-        margin-top: $gutter/2;
+    form {
+        @extend form.small-form;
     }
 }
 
