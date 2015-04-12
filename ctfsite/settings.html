@@ -1,0 +1,64 @@
+---
+layout: default
+title: Settings
+post_scripts:
+    - /js/settings.js
+    - //cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.1/handlebars.min.js
+---
+
+{% raw %}
+<script id="team-template" type="text/x-handlebars-template">
+    <h2>Team: {{ team.team_name }}</h2>
+
+    <p>Your team passphrase is: <span id="team-passphrase">{{ team.password }}</span></p>
+
+    <p>Members:</p>
+    <ul>
+        {{#each team.members }}
+            <li>{{ this }}</li>
+        {{/each}}
+    </ul>
+</script>
+<script id="achievement-template" type="text/x-handlebars-template">
+    <table>
+        {{#each achievements }}
+            <tr>
+                <td><img src="{{ image }}" /></td>
+                <td>
+                    <h3>{{ name }}</h3>
+                    <div>{{{ description }}}</div>
+                </td>
+            </tr>
+        {{/each}}
+    </table>
+</script>
+{% endraw %}
+
+<div id="team-settings">
+    <div id="team-box">
+    </div>
+    <h2>Achievements</h2>
+    <div id="achievement-box">
+    </div>
+</div>
+
+<div id="user-settings">
+    <h2>User Information</h2>
+    <form id="change-password-form">
+        <div class="form-row">
+            <label for="current-password">Current Password</label>
+            <input required type="password" id="current-password" name="current-password" placeholder="Current Password" />
+        </div>
+        <div class="form-row">
+            <label for="new-password">New Password</label>
+            <input required type="password" id="new-password" name="new-password" placeholder="New Password" />
+        </div>
+        <div class="form-row">
+            <label for="new-password-confirmation">Confirm Password</label>
+            <input required type="password" id="new-password-confirmation" name="new-password-confirmation" placeholder="Confirm Password" />
+        </div>
+        <div class="form-row">
+            <button type="submit" id="change-password-submit">Change Password</button>
+        </div>
+    </form>
+</div>

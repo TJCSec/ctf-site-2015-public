@@ -33,6 +33,7 @@ h1.main-title {
 @import "registration";
 @import "footer";
 @import "scoreboard";
+@import "settings";
 
 .main-content {
     @include outer-container;
