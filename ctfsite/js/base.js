@@ -59,13 +59,20 @@ jQuery(function($) {
         this.redirectIfUserIs('teacher', true, '/classroom')
     }
 
-    B.prototype.redirectIfUserIs = function(key, bool, url) {
-        window.tjctf.apiQuery('GET', '/api/user/status')
+    B.prototype.redirectIfUserIs = function(key, bool, url, hard) {
+        var query = window.tjctf.apiQuery('GET', '/api/user/status')
             .done(function(data) {
                 if (data.status === 1 && !!data.data[key] === !!bool) {
                     window.location = url
                 }
             })
+        if (hard) {
+            query.fail(function() {
+                setTimeout(function() {
+                    window.location = url
+                }, 1000)
+            })
+        }
     }
 
     B.prototype.logout = function() {
