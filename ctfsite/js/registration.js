@@ -3,7 +3,6 @@ jQuery(function($) {
     var fields = form.find('input, select')
     var backgroundField = form.find('#background')
     var teacherButton = form.find('#team-teacher-button')
-    var newTeacher = form.find('#create-new-teacher')
     var newTeam = form.find('#create-new-team')
 
     var options = form.find('.team-option-dropdown')
@@ -13,7 +12,6 @@ jQuery(function($) {
         var nextOption = $("#"+option+"-information")
         var prevOption = $(options).filter(':visible')
         newTeam.val((option === 'team-create')+'')
-        newTeacher.val((option === 'team-teacher')+'')
         prevOption.find('input')
             .prop('required', false)
         prevOption.slideUp({queue: false}).promise()
@@ -26,17 +24,6 @@ jQuery(function($) {
             })
     }
 
-    function showTeamButtons() {
-        var teacher = backgroundField.find('option:selected').data('teacher')
-        if (teacher) {
-            teacherButton.show()
-        } else {
-            teacherButton.hide()
-        }
-    }
-
-    backgroundField.on('change', showTeamButtons)
-
     teamButtons.on('click', function(e) {
         selectTeamOption($(e.currentTarget).val())
     })
@@ -46,13 +33,12 @@ jQuery(function($) {
 
         var data = fields.serialize()
         data['ctf-emails'] = 'true'
+        data['create-new-teacher'] = 'false'
 
         tjctf.apiQuery('POST', '/api/user/create', data)
             .done(function(data) {
                 $(options).filter(':visible').find('button[type="submit"]')
-                    .apiNotify(data, data['create-new-teacher'] === 'true' ? '/classroom' : '/team')
+                    .apiNotify(data, '/team')
             })
     })
-
-    showTeamButtons()
 })
