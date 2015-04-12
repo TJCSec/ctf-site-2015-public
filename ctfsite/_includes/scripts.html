@@ -1,4 +1,5 @@
 <script src="{{ site.url }}/js/jquery.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
 <script src="{{ site.url }}/js/vendor/notify.min.js"></script>
 <script src="{{ site.url }}/js/base.js"></script>
 <!-- <script src="//cdnjs.cloudflare.com/ajax/libs/semantic-ui/1.8.1/semantic.min.js"></script> -->
@@ -13,9 +14,9 @@ jQuery(function($) {
             tjctf.redirectIfUserIs('logged_in', false, '/login', true)
         {% else %}
             tjctf.redirectIfUserIs(
-                {{ redirection.key }},
+                '{{ redirection.key }}',
                 {{ redirection.state }},
-                {{ redirection.url }}
+                '{{ redirection.url }}'
                 {% if redirection.hard %}, {{ redirection.hard }}{% endif %}
             )
         {% endif %}
