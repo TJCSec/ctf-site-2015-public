@@ -1,0 +1,29 @@
+#scoreboard-table-parent {
+    table {
+        @include fill-parent;
+        min-width: 500px;
+    }
+    td {
+        padding-left: 10px;
+        padding-right: 10px;
+        padding-top: 20px;
+        padding-bottom: 8px;
+        text-align: left;
+    }
+    tr.header {
+        font-weight: bold;
+        border-bottom: 3px solid #bbb;
+    }
+    tr.even {
+        border-bottom: 1px solid #999;
+    }
+    tr.odd {
+        border-bottom: 1px solid #8bc;
+    }
+    td.nu {
+        text-align: right;
+    }
+    #alert {
+        text-align: center;
+    }
+}
