@@ -5,3 +5,13 @@
 {% for jsfile in page.post_scripts %}
     <script src="{% unless jsfile contains '//' %}{{ site.url }}{% endunless %}{{ jsfile }}"></script>
 {% endfor %}
+
+<script type="text/javascript">
+    {% for redirection in page.redirect %}
+        {% if redirection == 'not_logged_in' %}
+            tjctf.redirectIfUserIs('logged_in', false, '/login')
+        {% else %}
+            tjctf.redirectIfUserIs({{ redirection.key }}, {{ redirection.state }}, {{ redirection.url }})
+        {% endif %}
+    {% endfor %}
+</script>
