@@ -1,0 +1,48 @@
+form {
+    .form-row {
+        @include row;
+        margin-top: $gutter/2;
+    }
+
+    label {
+        @include span-columns(2);
+
+        font-weight: bold;
+    }
+
+    input, select {
+        @include span-columns(4);
+    }
+
+    .form-buttons {
+        text-align: center;
+        button {
+            display: inline-block;
+        }
+    }
+}
+
+form.small-form {
+    label {
+        @include span-columns(4);
+    }
+
+    input, select {
+        @include span-columns(8);
+    }
+}
+
+#login-form-box {
+    @include span-columns(8);
+    @include shift(2);
+
+    form {
+        @extend form.small-form;
+    }
+}
+
+#registration-form {
+    .team-option-dropdown {
+        display: none;
+    }
+}

@@ -34,10 +34,10 @@ h1.main-title {
 @import "hero";
 @import "nav";
 @import "problems";
-@import "registration";
 @import "footer";
 @import "scoreboard";
 @import "settings";
+@import "forms";
 
 .main-content {
     @include outer-container;
