@@ -1,23 +1,14 @@
 #!/bin/bash
 
-# Transpile the CoffeeScript files
-echo "Transpiling Coffeescript"
-coffee -c -o /home/vagrant/web/js/ /home/vagrant/web/coffee/
-
 # Shutdown the server
 echo "Shutting down nginx"
 sudo service nginx stop
 
-# Clean out the old files
-echo "Cleaning up old files"
-sudo rm -rf /srv/http/ctf/*
-
 echo "Generating web with Jekyll"
-cd /home/vagrant/web
-sudo jekyll build
+cd /home/vagrant/ctfsite
+sudo jekyll build --destination /src/http/ctf
 
 echo "Copying files to server"
-#sudo cp -r /home/vagrant/web/* /srv/http/ctf/
 mkdir -p /home/vagrant/problem_static
 sudo cp -r /home/vagrant/problem_static /srv/http/ctf/problem-static
 
