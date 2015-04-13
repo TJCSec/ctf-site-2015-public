@@ -139,6 +139,18 @@ def get_user(name=None, uid=None):
 
     return user
 
+def check_create_username(username):
+    """
+    Ensures that the username is not already used and raises and error if it is
+
+    Args:
+        username: username to check
+    Returns:
+        Nothing
+    """
+    if safe_fail(get_user, name=username) is not None:
+        raise InternalException("User already exists!")
+
 def create_user(username, firstname, lastname, email, password_hash, tid, teacher=False,
                 background="undefined", country="undefined", receive_ctf_emails=False):
     """
@@ -159,8 +171,7 @@ def create_user(username, firstname, lastname, email, password_hash, tid, teache
     db = api.common.get_conn()
     uid = api.common.token()
 
-    if safe_fail(get_user, name=username) is not None:
-        raise InternalException("User already exists!")
+    check_create_username(username)
 
     updated_team = db.teams.find_and_modify(
         query={"tid": tid, "size": {"$lt": api.team.max_team_users}},
@@ -257,6 +268,8 @@ def create_user_request(params):
     """
 
     validate(user_schema, params)
+
+    check_create_username(username)
 
     if api.config.enable_captcha and not _validate_captcha(params):
         raise WebException("Incorrect captcha!")
