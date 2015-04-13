@@ -82,7 +82,7 @@ jQuery(function($) {
             })
     }
 
-    $.fn.serialize = function() {
+    jQuery.fn.serialize = function() {
         var keys = {}
         this.each(function() {
             if (this.name && this.value) {
@@ -92,7 +92,7 @@ jQuery(function($) {
         return keys
     }
 
-    $.fn.apiNotify = function(data, redirect, config) {
+    jQuery.fn.apiNotify = function(data, redirect, config) {
         config = config || {}
         config.className = notifyClass(data)
         var ret = $(this).notify(data.message, config)
