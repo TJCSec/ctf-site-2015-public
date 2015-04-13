@@ -20,7 +20,7 @@
             <label for="background">Background</label>
             <select required id="background" name="background">
                 {% for background in site.data.backgrounds %}
-                    <option value="{{ background.value }}">{{ background.name | escape }}</option>
+                    <option value="{{ background.value }}" {% if background.default %}selected{% endif %}>{{ background.name | escape }}</option>
                 {% endfor %}
             </select>
             <label for="country">Country</label>
