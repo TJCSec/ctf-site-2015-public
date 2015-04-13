@@ -6,7 +6,7 @@ sudo service nginx stop
 
 echo "Generating web with Jekyll"
 cd /home/vagrant/ctfsite
-sudo jekyll build --destination /src/http/ctf
+sudo jekyll build --destination /srv/http/ctf
 
 echo "Copying files to server"
 mkdir -p /home/vagrant/problem_static
