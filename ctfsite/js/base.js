@@ -1,6 +1,6 @@
 // Sets up window.tjctf
 
-jQuery(function($) {
+;(function($) {
     var B = function() {
     }
 
@@ -105,4 +105,4 @@ jQuery(function($) {
     }
 
     window.tjctf = new B()
-})
+})(jQuery)
