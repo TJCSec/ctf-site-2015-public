@@ -38,7 +38,7 @@ jQuery(function($) {
         tjctf.apiQuery('POST', '/api/user/create', data)
             .done(function(data) {
                 $(options).filter(':visible').find('button[type="submit"]')
-                    .apiNotify(data, '/team')
+                    .apiNotify(data, '/settings')
             })
     })
 })
