@@ -58,27 +58,28 @@
             })
     }
 
-    jQuery.fn.serialize = function() {
-        var keys = {}
-        this.each(function() {
-            if (this.name && this.value) {
-                keys[this.name] = this.value
+    jQuery.fn.extend({
+        serialize: function() {
+            var keys = {}
+            this.each(function() {
+                if (this.name && this.value) {
+                    keys[this.name] = this.value
+                }
+            })
+            return keys
+        },
+        apiNotify: function(data, redirect, config) {
+            config = config || {}
+            config.className = notifyClass(data)
+            var ret = $(this).notify(data.message, config)
+            if (redirect && config.className === 'success') {
+                setTimeout(function() {
+                    window.location = redirect
+                }, 1000)
             }
-        })
-        return keys
-    }
-
-    jQuery.fn.apiNotify = function(data, redirect, config) {
-        config = config || {}
-        config.className = notifyClass(data)
-        var ret = $(this).notify(data.message, config)
-        if (redirect && config.className === 'success') {
-            setTimeout(function() {
-                window.location = redirect
-            }, 1000)
-        }
-        return ret
-    }
+            return ret
+        },
+    })
 
     window.tjctf = new B()
 })(jQuery)
