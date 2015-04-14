@@ -1,6 +1,6 @@
 // Sets up window.tjctf
 
-jQuery(function($) {
+;(function($) {
     var B = function() {
     }
 
@@ -51,30 +51,6 @@ jQuery(function($) {
             })
     }
 
-    B.prototype.redirectIfLoginStatus = function(loggedIn) {
-        this.redirectIfUserIs('logged_in', loggedIn, loggedIn ? '/' : '/login')
-    }
-
-    B.prototype.redirectIfTeacher = function() {
-        this.redirectIfUserIs('teacher', true, '/classroom')
-    }
-
-    B.prototype.redirectIfUserIs = function(key, bool, url, hard) {
-        var query = window.tjctf.apiQuery('GET', '/api/user/status')
-            .done(function(data) {
-                if (data.status === 1 && !!data.data[key] === !!bool) {
-                    window.location = url
-                }
-            })
-        if (hard) {
-            query.fail(function() {
-                setTimeout(function() {
-                    window.location = url
-                }, 1000)
-            })
-        }
-    }
-
     B.prototype.logout = function() {
         window.tjctf.apiQuery('GET', '/api/user/logout')
             .done(function(data) {
@@ -105,4 +81,36 @@ jQuery(function($) {
     }
 
     window.tjctf = new B()
+})(jQuery)
+
+jQuery(function($) {
+    var statusChecks = tjctf.statusChecks || []
+
+    function checkHardRedirects() {
+        statusChecks.forEach(function(check) {
+            if (check.hard) {
+                setTimeout(function() {
+                    window.location = url
+                }, 1000)
+            }
+        })        
+    }
+
+    tjctf.apiQuery('GET', '/api/user/status')
+        .done(function(data) {
+            if (data.status === 1) {
+                tjctf.userStatus = data.data
+                statusChecks.forEach(function(check) {
+                    if (!!data.data[check.key] === !!check.state) {
+                        window.location = check.url
+                    }
+                })
+                if (data.data.logged_in) {
+                    $(document.body).addClass('logged-in')
+                }
+            } else {
+                checkHardRedirects()
+            }
+        })
+        .fail(checkHardRedirects)
 })
