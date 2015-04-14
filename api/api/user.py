@@ -269,7 +269,7 @@ def create_user_request(params):
 
     validate(user_schema, params)
 
-    check_create_username(username)
+    check_create_username(params['username'])
 
     if api.config.enable_captcha and not _validate_captcha(params):
         raise WebException("Incorrect captcha!")
