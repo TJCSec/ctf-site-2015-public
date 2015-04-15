@@ -1,3 +1,27 @@
+@import "vars";
+
+input, select, textarea, button {
+    border-radius: 5px;
+}
+
+input, select, textarea {
+    border: solid 1px;
+    border-color: $color-header;
+    padding: 1px 5px;
+}
+
+button {
+    border: outset 2px;
+    background-color: $color-header;
+    padding: 6px 15px;
+
+    color: #ffffff;
+}
+
+button:active {
+    border-style: inset;
+}
+
 form {
     .form-row {
         @include row;
@@ -10,7 +34,7 @@ form {
         font-weight: bold;
     }
 
-    input, select {
+    input, select, textarea {
         @include span-columns(4);
     }
 
