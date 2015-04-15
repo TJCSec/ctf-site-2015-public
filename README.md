@@ -8,6 +8,60 @@ The official home for the rewrite of the promotional site for [TJCTF](http://tjc
 1. Ensure that there is a cookie domain so that Flask can save sessions
 2. Double check all the config in `api/api/config.py` before deploying
 
+## Git
+--------------
+
+### Branches
+
+* `master` is the main branch for the site. Should *NOT* contain any sensitive information or keys
+* `site` is the branch that contains important keys. This branch should *NEVER* be merged into any other branches
+* `prejekyll` really should be a tag. It is the site before the switch to Jekyll
+
+There should be no other branches :)
+
+### Git Flow
+
+The basic steps are listed below. They are described in more detail afterwards.
+
+1. Update master
+2. Use a work branch
+3. Clean up your work before sharing
+4. Pull request so that people get notified
+5. Clean up your workspace to start again
+
+When doing work, always make sure to update and checkout a new branch. This way, we keep the main branch clean.
+
+    git checkout master
+    git pull origin master
+    git checkout -b my-work-branch
+
+Before committing to the main branch, clean up your work and make sure it will fit in nicely
+
+    git checkout master
+    git pull origin master
+    git checkout my-work-branch
+    git rebase --interactive master
+
+Repeat the rebase until you have achieved work that follows a nice linear history. Make sure that you are only committing the files that you want to be committed, and not some other strange files. You really should be `git add`ing the files and not `git commit -a` of all the files.
+
+After your work is nice and rebased after the most recent master, pull request the changes so that everyone else who is working gets notified
+
+    git push origin my-work-branch
+
+On github, pull request with master as the main branch and your work branch as the compare branch. If it says that your branch cannot be automatically merged, then you did something wrong. Get rid of your remote branch
+
+    git push origin :my-work-branch
+
+and ry the clean-up steps again (`pull origin master` and `rebase --interactive master`).
+
+Once you automatically merge your work branch, make sure to delete it either from the github interface or locally.
+
+Then, clean up your workspace.
+
+    git checkout master
+    git pull origin master
+    git branch --delete my-work-branch
+
 ## Installation
 --------------
 First, make sure that you have all the ruby gems (you need Ruby and Bundler to do this)
