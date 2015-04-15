@@ -20,8 +20,9 @@ jQuery(function($) {
     function getScoreboard(cb) {
         tjctf.apiQuery('GET', '/api/stats/scoreboard')
             .done(function(json) {
-                boardCache = json.data.groups[0];      //change to public when api is working
-                renderScoreboard(json.data.groups[0]);
+                boardCache = {}
+                boardCache.scoreboard = json.data.public;      //change to public when api is working
+                renderScoreboard(boardCache);
             })
     }
 
