@@ -7,6 +7,10 @@
     position: relative;
     overflow: hidden;
 
+    a {
+        text-decoration: none;
+    }
+
     h1 {
         @extend h1.main-title;
         font-size: $hero-header-size;
@@ -74,7 +78,6 @@
 
         .register-link {
             a {
-                text-decoration: none;
                 @extend h1.main-title;
                 font-size: $hero-header-size * 0.4;
 
@@ -82,6 +85,23 @@
                 padding: 10px;
                 border-radius: 5px;
                 display: inline-block;
+            }
+        }
+    }
+
+    nav {
+        text-align: center;
+
+        ul.nav-links {
+            display: inline-block;
+            li {
+                float: left;
+                list-style-type: none;
+                margin-right: 40px;
+                a {
+                    @extend h1.main-title;
+                    font-size: 30px;
+                }
             }
         }
     }
