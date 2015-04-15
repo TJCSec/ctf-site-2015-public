@@ -40,7 +40,7 @@ testing_mongo_port = 27017
 enable_teachers = False
 enable_feedback = True
 
-competition_name = "picoCTF"
+competition_name = "TJCTF"
 competition_urls = ["127.0.0.1:8080"]
 
 # Max users on any given team
