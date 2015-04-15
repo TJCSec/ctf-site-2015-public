@@ -25,6 +25,9 @@ header {
             .logo {
                 height: $nav-inner-height;
                 float: left;
+
+                @include filter(drop-shadow(0 0 3px #64C4C4));
+                @include user-select(none);
                 pointer-events: none;
             }
         }
