@@ -9,6 +9,10 @@ html {
     color: $color-text;
 }
 
+body.logged-in .be-not-logged-in {
+    display: none !important;
+}
+
 body:not(.logged-in) .be-logged-in {
     display: none !important;
 }
