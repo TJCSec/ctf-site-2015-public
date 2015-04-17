@@ -205,7 +205,7 @@ jQuery(function($) {
         pid.val(problem.pid)
         flagBox.val('')
 
-        $.featherlight(info)
+        $.featherlight(info).$instance.find("#flag").addClass("active")
     }
 
     function showAchievement(achievement, config) {
@@ -241,7 +241,7 @@ jQuery(function($) {
         e.preventDefault()
         tjctf.apiQuery('POST', '/api/problems/submit', {
             pid: pid.val(),
-            key: flagBox.val(),
+            key: $(".active").val(),
         })
             .done(function(data) {
                 tjctf.notify(data)
