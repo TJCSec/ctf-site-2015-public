@@ -39,8 +39,12 @@ jQuery(function($) {
     Handlebars.registerHelper("parity", function(number, options) {
         return ["even","odd"][parseInt(number)%2];
     })
-    tjctf.apiQuery("GET","/api/stats/top_teams/score_progression").done(function(TopTeams) {
-        tjctf.apiQuery("GET","/api/team").done(function(myTeam) {
+
+    $.when(
+        tjctf.apiQuery('GET', '/api/stats/top_teams/score_progression'),
+        tjctf.apiQuery('GET', '/api/team'),
+    )
+        .done(function(TopTeams, myTeam) {
             var baseData = {
                 labels: [],
                 datasets: [
@@ -77,5 +81,4 @@ jQuery(function($) {
                 chart.update();
             }
         })
-    })
 })
