@@ -39,4 +39,24 @@ jQuery(function($) {
     Handlebars.registerHelper("parity", function(number, options) {
         return ["even","odd"][parseInt(number)%2];
     })
+    tjctf.apiQuery("GET","/api/stats/top_teams/score_progression").done(function(json) {
+        var baseData = {
+            labels: [],
+            datasets: [
+                {
+                    label: "My First dataset",
+                    fillColor: "rgba(0, 159, 218, .5)",
+                    strokeColor: "rgba(0, 159, 218, 1)",
+                    highlightFill: "rgba(0, 159, 218, .75)",
+                    highlightStroke: "rgba(0, 159, 218, 1)",
+                    data: [],
+                }
+            ]
+        };
+        for (team in json.data) {
+            baseData.labels.push(json.data[team].name)
+            baseData.datasets[0].data.push(json.data[team].score_progression[0] || 0)
+        }
+        new Chart($("#chart").get(0).getContext("2d")).Bar(baseData, {})
+    })
 })

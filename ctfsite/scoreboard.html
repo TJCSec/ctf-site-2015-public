@@ -4,6 +4,7 @@ layout: default
 post_scripts:
     - //cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.1/handlebars.min.js
     - /js/scoreboard.js
+    - https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.2/Chart.min.js
 ---
 
 {% raw %}
@@ -37,6 +38,9 @@ post_scripts:
 
 {% endraw %}
 
+<div id="canvas-parent">
+	<canvas id="chart"></canvas>
+</div>
 <div id="scoreboard-table-parent">
     <div id="body"></div>
 </div>
