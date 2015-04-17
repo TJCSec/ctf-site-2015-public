@@ -2,6 +2,10 @@
     table {
         @include fill-parent;
         min-width: 500px;
+        table-layout: fixed;
+    }
+    #alert {
+        height: 1.5em;
     }
     td {
         padding-left: 10px;
@@ -9,6 +13,10 @@
         padding-top: 20px;
         padding-bottom: 8px;
         text-align: left;
+    }
+    td.name {
+        max-width: 350px;
+        min-width: 200px;
     }
     tr.header {
         font-weight: bold;
