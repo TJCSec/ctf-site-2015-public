@@ -1,0 +1,6 @@
+<ul class="nav-links">
+    {% for link in site.menu %}
+        {% capture loginclass %}{% if link.logged_in == true %}be-logged-in{% elsif link.logged_in == false %}be-not-logged-in{% endif %}{% endcapture %}
+        <li class="{{ loginclass }}"><a href="{{ link.href }}">{{ link.text }}</a></li>
+    {% endfor %}
+</ul>
