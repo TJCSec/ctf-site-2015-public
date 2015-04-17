@@ -20,6 +20,10 @@ menu:
         text: Learn
         href: /prepare
     -
+        text: Login
+        href: /login
+        logged_in: false
+    -
         text: Settings
         href: /settings
         logged_in: true
