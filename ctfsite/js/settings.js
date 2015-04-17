@@ -14,6 +14,15 @@ jQuery(function($) {
             $("#achievement-box").html(achievementTmpl({achievements: json.data}))
         })
 
+    $('#logout-button').on('click', function(e) {
+        e.preventDefault()
+
+        tjctf.apiQuery('GET', '/api/user/logout')
+            .done(function(json) {
+                tjctf.notify(json, '/')
+            })
+    })
+
     $("#change-password-form").on('submit', function(e) {
         e.preventDefault()
 
