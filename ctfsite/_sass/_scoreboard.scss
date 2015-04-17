@@ -6,6 +6,7 @@
     }
     #scoreboard-message {
         height: 1.5em;
+        font-weight: bold;
     }
     td {
         padding-left: 10px;
@@ -33,5 +34,14 @@
     }
     #alert {
         text-align: center;
+    }
+}
+#canvas-parent {
+    #chart {
+        width: 700px;
+        height: 300px;
+        margin: auto auto;
+        display: block;
+        padding-bottom: 10px;
     }
 }
