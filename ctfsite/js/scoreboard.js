@@ -1,10 +1,10 @@
 jQuery(function($) {
-    var schoolLim, boardCache, lim,
+    var schoolLim, lim
     
     schoolLim = null;
 
     function renderScoreboard(board) {
-        board = board || boardCache;
+        board = board || tjctf.board;
         var score_entry = Handlebars.compile($("#score-entry").html());
         board.schoolLim = schoolLim;
         $("#body").html(score_entry(board))
@@ -19,9 +19,10 @@ jQuery(function($) {
     function getScoreboard(cb) {
         tjctf.apiQuery('GET', '/api/stats/scoreboard')
             .done(function(json) {
-                boardCache = {}
-		boardCache.scoreboard = json.data.public;      //change to public when api is working
-                renderScoreboard(boardCache);
+                tjctf.board = {
+                    scoreboard: json.data.public,
+                }
+                renderScoreboard();
             })
     }
 
