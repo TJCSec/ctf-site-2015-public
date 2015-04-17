@@ -146,7 +146,6 @@ jQuery(function($) {
     var achievementName = achievementInfo.find('#achievement-name')
     var achievementDesc = achievementInfo.find('#achievement-description')
     var pid = info.find('#pid')
-    var flagBox = info.find('#flag')
 
     function loadProblems(problems) {
         var pvalues = problems.map(function(p) {
@@ -203,9 +202,8 @@ jQuery(function($) {
         problemValue.text(problem.score+'')
         problemDesc.html(problem.description)
         pid.val(problem.pid)
-        flagBox.val('')
 
-        $.featherlight(info).$instance.find("#flag").addClass("active")
+        $.featherlight(info)
     }
 
     function showAchievement(achievement, config) {
@@ -239,10 +237,10 @@ jQuery(function($) {
 
     form.on('submit', function(e) {
         e.preventDefault()
-        tjctf.apiQuery('POST', '/api/problems/submit', {
-            pid: pid.val(),
-            key: $(".active").val(),
-        })
+
+        var currentFormFields = $.featherlight.current().$instance.find('#problem-form input')
+
+        tjctf.apiQuery('POST', '/api/problems/submit', currentFormFields.serialize())
             .done(function(data) {
                 tjctf.notify(data)
                 if (data.status) {
