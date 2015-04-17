@@ -1,5 +1,10 @@
 @import "forms";
 
+#logout-button {
+    float: right;
+    font-size: initial;
+}
+
 #team-settings, #user-settings {
     @include span-columns(6);
 
