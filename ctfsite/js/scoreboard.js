@@ -44,7 +44,7 @@ jQuery(function($) {
             labels: [],
             datasets: [
                 {
-                    label: "My First dataset",
+                    label: "Top Teams",
                     fillColor: "rgba(0, 159, 218, .5)",
                     strokeColor: "rgba(0, 159, 218, 1)",
                     highlightFill: "rgba(0, 159, 218, .75)",
