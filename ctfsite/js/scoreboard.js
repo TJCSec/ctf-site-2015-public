@@ -45,7 +45,8 @@ jQuery(function($) {
         tjctf.apiQuery('GET', '/api/team'),
     )
         .done(function(TopTeams, myTeam) {
-            var baseData = {
+            var baseData, teamIndex, myName, team, chart
+            baseData = {
                 labels: [],
                 datasets: [
                     {
@@ -58,8 +59,8 @@ jQuery(function($) {
                     }
                 ]
             };
-            var teamIndex = -1;
-            var myName = myTeam.data.team_name;
+            teamIndex = -1;
+            myName = myTeam.data.team_name;
             for (team in TopTeams.data) {
                 if (TopTeams.data[team].name == myName) {
                     teamIndex = team;
