@@ -48,7 +48,7 @@ h1.main-title {
     @include outer-container;
 
     box-sizing: content-box;
-    padding: 0 2em;
+    padding: 0 $content-pad;
     
     & > * {
         box-sizing: border-box;

@@ -1,3 +1,27 @@
 footer {
-    margin-bottom: 30px;
+    @include radial-gradient(at 50% top, #0B6382 0%, #020C10 150%);
+    width: 100%;
+
+    margin-top: 30px;
+    padding: 5px 0;
+}
+
+.footer-content {
+    @include outer-container;
+
+    padding: 0 $content-pad;
+
+    box-sizing: content-box;
+    & > * {
+        box-sizing: border-box;
+    }
+
+    .copy {
+        float: right;
+        color: white;
+
+        a {
+            color: inherit;
+        }
+    }
 }
