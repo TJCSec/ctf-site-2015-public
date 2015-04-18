@@ -147,6 +147,10 @@ jQuery(function($) {
     var achievementDesc = achievementInfo.find('#achievement-description')
     var pid = info.find('#pid')
 
+    function categoryToClass(category) {
+        return category.toLowerCase().replace(' ', '-')
+    }
+
     function loadProblems(problems) {
         var pvalues = problems.map(function(p) {
             return p.score
@@ -166,11 +170,11 @@ jQuery(function($) {
                     height: problem.rect.h,
                 })
                 .addClass(problem.solved ? 'solved' : '')
-                .addClass(problem.category)
+                .addClass(categoryToClass(problem.category))
                 .addClass('problem')
 
             var listed = $('<li>')
-                .addClass(problem.category)
+                .addClass(categoryToClass(problem.category))
                 .addClass(problem.solved ? 'solved' : '')
                 .addClass('problem')
                 .text(problem.name)

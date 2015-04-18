@@ -22,4 +22,11 @@ $problem-list-pad: 0.5em;
 
 $problem-grid-height: 500px;
 
-$problem-types: (Web: red, Cryptography: blue, Binary: orange, Forensics: yellow, Reverse: purple, Miscellaneous: blue-green);
+$problem-types: (
+    web-exploitation: red,
+    cryptography: blue,
+    binary-exploitation: orange,
+    forensics: yellow,
+    reverse-engineering: purple,
+    miscellaneous: blue-green
+);
