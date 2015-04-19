@@ -74,6 +74,12 @@ def after_request(response):
             session['token'] = csrf_token
             response.set_cookie('token', csrf_token)
 
+        if request.cookies.get('logged_in') != 'true':
+            response.set_cookie('logged_in', 'true')
+    else:
+        if 'logged_in' in request.cookies:
+            response.set_cookie('logged_in', '', expires=0)
+
     # JB: This is a hack. We need a better solution
     if request.path[0:19] != "/api/autogen/serve/":
         response.mimetype = 'application/json'

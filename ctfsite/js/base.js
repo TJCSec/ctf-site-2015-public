@@ -93,8 +93,10 @@ jQuery(function($) {
                     window.location = url
                 }, 1000)
             }
-        })        
+        })
     }
+
+    $(document.body).toggleClass('logged-in', !!$.cookie('logged_in'))
 
     tjctf.apiQuery('GET', '/api/user/status')
         .done(function(data) {
@@ -105,9 +107,7 @@ jQuery(function($) {
                         window.location = check.url
                     }
                 })
-                if (data.data.logged_in) {
-                    $(document.body).addClass('logged-in')
-                }
+                $(document.body).toggleClass('logged-in', data.data.logged_in)
             } else {
                 checkHardRedirects()
             }
