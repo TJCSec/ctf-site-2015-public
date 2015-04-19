@@ -9,10 +9,8 @@ html {
     color: $color-text;
 }
 
-body.logged-in .be-not-logged-in {
-    display: none !important;
-}
-
+body.logged-in .be-not-logged-in,
+body:not(.competition-active) .be-competition-active,
 body:not(.logged-in) .be-logged-in {
     display: none !important;
 }

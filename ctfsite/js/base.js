@@ -97,6 +97,7 @@ jQuery(function($) {
     }
 
     $(document.body).toggleClass('logged-in', !!$.cookie('logged_in'))
+    $(document.body).toggleClass('competition-active', !!$.cookie('competition_active'))
 
     tjctf.apiQuery('GET', '/api/user/status')
         .done(function(data) {
@@ -108,6 +109,7 @@ jQuery(function($) {
                     }
                 })
                 $(document.body).toggleClass('logged-in', data.data.logged_in)
+                $(document.body).toggleClass('competition-active', data.data.competition_active)
             } else {
                 checkHardRedirects()
             }
