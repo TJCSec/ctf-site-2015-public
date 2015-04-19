@@ -136,16 +136,15 @@ jQuery(function($) {
 
     var grid = $('#problem-grid')
     var list = $('#problem-list')
-    var info = $('#problem-info')
     var achievementInfo = $('#achievement-info')
-    var form = $('#problem-form')
-    var problemName = info.find('#problem-name')
-    var problemValue = info.find('#problem-value')
-    var problemDesc = info.find('#problem-description')
     var achievementImage = achievementInfo.find('#achievement-image')
     var achievementName = achievementInfo.find('#achievement-name')
     var achievementDesc = achievementInfo.find('#achievement-description')
-    var pid = info.find('#pid')
+
+    var problemTemplate = Handlebars.compile($('#problem-template').html())
+    var achievementTemplate = Handlebars.compile($('#achievement-template').html())
+    var problemGridTemplate = Handlebars.compile($('#problem-grid-template').html())
+    var problemListTemplate = Handlebars.compile($('#problem-list-template').html())
 
     function categoryToClass(category) {
         return category.toLowerCase().replace(' ', '-')
@@ -161,39 +160,20 @@ jQuery(function($) {
             problems[i].rect = rect
         })
 
+        tjctf.pids = tjctf.pids || {}
+
         problems.forEach(function(problem) {
-            var gridded = $('<div>')
-                .css({
-                    left: problem.rect.x,
-                    top: problem.rect.y,
-                    width: problem.rect.w,
-                    height: problem.rect.h,
-                })
-                .addClass(problem.solved ? 'solved' : '')
-                .addClass(categoryToClass(problem.category))
-                .addClass('problem')
-
-            var listed = $('<li>')
-                .addClass(categoryToClass(problem.category))
-                .addClass(problem.solved ? 'solved' : '')
-                .addClass('problem')
-                .text(problem.name)
-
-            var listPoints = $('<span>')
-                .addClass('points')
-                .text(problem.score)
-
-            listed.append(listPoints)
-
-            gridded.data('problem', problem)
-            listed.data('problem', problem)
-
-            grid.append(gridded)
-            list.append(listed)
+            tjctf.pids[problem.pid] = problem
+            problem.categoryClass = categoryToClass(problem.category)
         })
 
-        $().add(list).add(grid).children('.problem').on('click', function(e) {
-            var problem = $(e.currentTarget).data('problem')
+        list.html(problemListTemplate(problems))
+        grid.html(problemGridTemplate(problems))
+
+        var problemBoxes = $().add(list).add(grid).children('.problem')
+
+        problemBoxes.on('click', function(e) {
+            var problem = tjctf.pids[$(e.currentTarget).data('pid')]
 
             if (problem && !problem.disabled) {
                 showProblem(problem)
@@ -202,20 +182,17 @@ jQuery(function($) {
     }
 
     function showProblem(problem) {
-        problemName.text(problem.name)
-        problemValue.text(problem.score+'')
-        problemDesc.html(problem.description)
-        pid.val(problem.pid)
+        var html = problemTemplate({problem: problem})
 
-        $.featherlight(info)
+        var featherbox = $.featherlight(html).$instance
+        featherbox.find('#problem-form').on('submit', submitFlagEvent)
+        featherbox.find('input[type="text"]').focus()
     }
 
     function showAchievement(achievement, config) {
-        achievementName.text(achievement.name)
-        achievementDesc.text(achievement.description)
-        achievementImage.attr('src', achievement.image)
+        var html = achievementTemplate(achievement)
 
-        $.featherlight(achievementInfo, config)
+        $.featherlight(html, config)
     }
 
     function showAchievements(achievements) {
@@ -239,20 +216,25 @@ jQuery(function($) {
             })
     }
 
-    form.on('submit', function(e) {
+    function submitFlagEvent(e) {
         e.preventDefault()
 
-        var currentFormFields = $.featherlight.current().$instance.find('#problem-form input')
+        var featherbox = $.featherlight.current().$instance
+
+        var currentFormFields = featherbox.find('#problem-form input')
+        var currentButton = featherbox.find('button')
 
         tjctf.apiQuery('POST', '/api/problems/submit', currentFormFields.serialize())
             .done(function(data) {
-                tjctf.notify(data)
                 if (data.status) {
                     $.featherlight.close()
+                    tjctf.notify(data)
+                } else {
+                    currentButton.notify(data)
                 }
                 showNewAchievements()
             })
-    })
+    }
 
     tjctf.apiQuery('GET', '/api/problems')
         .done(function(json) {

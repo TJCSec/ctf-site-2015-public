@@ -24,11 +24,27 @@ $problem-list-pad: 0.5em;
 
 $problem-grid-height: 500px;
 
+$problem-done: #776;
+
+// $problem-color-base: #FDD077 #C89CF6 #4DCC7D #DC7971 #CAD800 #F3B0D4;
+// $problem-color-base: #99C9FB #21BF97 #B186AC #4CA3A6 #9ABDD7 #8CB6FB;
+// $problem-color-base: #024C7F #44A062 #5BF2F4 #186FDE #0D766E #6878C0 #334775;
+// $problem-color-base: #D4B938 #5D3A9E #ED4402 #204522 #55D254 #F672AD #2888C6;
+$problem-color-base: #38ECD8 #F1CB3C #7DEE3D #69EC86 #ACE561 #D5E63C;
+
 $problem-types: (
-    web-exploitation: red,
-    cryptography: blue,
-    binary-exploitation: orange,
-    forensics: yellow,
-    reverse-engineering: purple,
-    miscellaneous: blue-green
+    web-exploitation:           nth($problem-color-base, 1),
+    cryptography:               nth($problem-color-base, 2),
+    binary-exploitation:        nth($problem-color-base, 3),
+    forensics:                  nth($problem-color-base, 4),
+    reverse-engineering:        nth($problem-color-base, 5),
+    miscellaneous:              nth($problem-color-base, 6),
 );
+
+$form-input-top-pad: 1px;
+$form-input-side-pad: 5px;
+$form-input-border: 1px;
+
+$form-button-side-pad: 15px;
+$form-button-top-pad: 6px;
+$form-button-border: 2px;

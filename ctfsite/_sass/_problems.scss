@@ -47,7 +47,7 @@
     }
 
     &.solved {
-        background-color: green;
+        background-color: $problem-done;
     }
 }
 
@@ -75,29 +75,35 @@
     }
 }
 
-#problem-info {
-    @extend .featherlight-content-source;
+.problem-popup-info {
     max-width: em(700px);
 
     .problem-head {
         @include row;
 
-        #problem-name {
+        .problem-name {
             float: left;
             margin: 0;
         }
 
-        #problem-value {
+        .problem-value {
             float: right;
             margin: 0;
         }
     }
 
-    form {
+    .problem-description {
+        margin: 0.5em 0;
+    }
+
+    .problem-submit {
         @include row;
 
-        #flag {
+        #flag-box {
             @include span-columns(9);
+            $flag-box-pad: $form-button-top-pad + $form-button-border - $form-input-border;
+            padding-top: $flag-box-pad;
+            padding-bottom: $flag-box-pad;
         }
     }
 }

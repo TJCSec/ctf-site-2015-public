@@ -5,15 +5,15 @@ input, select, textarea, button {
 }
 
 input, select, textarea {
-    border: solid 1px;
+    border: solid $form-input-border;
     border-color: $color-header;
-    padding: 1px 5px;
+    padding: $form-input-top-pad $form-input-side-pad;
 }
 
 button {
-    border: outset 2px;
+    border: outset $form-button-border;
     background-color: $color-header;
-    padding: 6px 15px;
+    padding: $form-button-top-pad $form-button-side-pad;
 
     color: #ffffff;
 }
