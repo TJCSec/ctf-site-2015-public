@@ -30,13 +30,19 @@ redirects:
         </div>
     </form>
 </script>
-{% endraw %}
-<div id="achievement-info">
-    <img id="achievement-image" />
-    <div id="achievement-data">
-        <h2 id="achievement-name"></h2>
-        <div id="achievement-description"></div>
+<script id="achievement-template" type="text/x-handlebars-template">
+    <div id="achievement-box">
+        <table>
+            <tr>
+                <td><img src="{{ image }}" /></td>
+                <td>
+                    <h3>{{ name }}</h3>
+                    <div>{{{ description }}}</div>
+                </td>
+            </tr>
+        </table>
     </div>
-</div>
+</script>
+{% endraw %}
 <div id="problem-grid"></div>
 <ul id="problem-list"></ul>

@@ -136,18 +136,13 @@ jQuery(function($) {
 
     var grid = $('#problem-grid')
     var list = $('#problem-list')
-    var info = $('#problem-info')
     var achievementInfo = $('#achievement-info')
-    var form = $('#problem-form')
-    var problemName = info.find('#problem-name')
-    var problemValue = info.find('#problem-value')
-    var problemDesc = info.find('#problem-description')
     var achievementImage = achievementInfo.find('#achievement-image')
     var achievementName = achievementInfo.find('#achievement-name')
     var achievementDesc = achievementInfo.find('#achievement-description')
-    var pid = info.find('#pid')
 
     var problemTemplate = Handlebars.compile($('#problem-template').html())
+    var achievementTemplate = Handlebars.compile($('#achievement-template').html())
 
     function categoryToClass(category) {
         return category.toLowerCase().replace(' ', '-')
@@ -212,11 +207,9 @@ jQuery(function($) {
     }
 
     function showAchievement(achievement, config) {
-        achievementName.text(achievement.name)
-        achievementDesc.text(achievement.description)
-        achievementImage.attr('src', achievement.image)
+        var html = achievementTemplate(achievement)
 
-        $.featherlight(achievementInfo, config)
+        $.featherlight(html, config)
     }
 
     function showAchievements(achievements) {
