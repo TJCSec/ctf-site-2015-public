@@ -66,19 +66,14 @@ def after_request(response):
     response.headers.add('Access-Control-Allow-Headers', 'Content-Type, *')
     response.headers.add('Cache-Control', 'no-cache')
     response.headers.add('Cache-Control', 'no-store')
-    if api.auth.is_logged_in():
+    logged_in = api.auth.is_logged_in()
+    if logged_in:
         if 'token' in session:
             response.set_cookie('token', session['token'])
         else:
             csrf_token = api.common.token()
             session['token'] = csrf_token
             response.set_cookie('token', csrf_token)
-
-        if request.cookies.get('logged_in') != 'true':
-            response.set_cookie('logged_in', 'true')
-    else:
-        if 'logged_in' in request.cookies:
-            response.set_cookie('logged_in', '', expires=0)
 
     # JB: This is a hack. We need a better solution
     if request.path[0:19] != "/api/autogen/serve/":

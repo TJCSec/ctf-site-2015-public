@@ -7,6 +7,7 @@ menu:
         text: Game
         href: /problems
         logged_in: true
+        competition_active: true
     -
         text: Scoreboard
         href: /scoreboard
