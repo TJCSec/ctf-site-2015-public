@@ -96,8 +96,12 @@ jQuery(function($) {
         })
     }
 
-    $(document.body).toggleClass('logged-in', !!$.cookie('logged_in'))
-    $(document.body).toggleClass('competition-active', !!$.cookie('competition_active'))
+    function toggleSessionStateClasses() {
+        $(document.body).toggleClass('logged-in', $.cookie('logged_in') === 'true')
+        $(document.body).toggleClass('competition-active', $.cookie('competition_active') === 'true')
+    }
+
+    toggleSessionStateClasses()
 
     tjctf.apiQuery('GET', '/api/user/status')
         .done(function(data) {
@@ -108,8 +112,9 @@ jQuery(function($) {
                         window.location = check.url
                     }
                 })
-                $(document.body).toggleClass('logged-in', data.data.logged_in)
-                $(document.body).toggleClass('competition-active', data.data.competition_active)
+                $.cookie('logged_in', !!data.data.logged_in)
+                $.cookie('competition_active', !!data.data.competition_active)
+                toggleSessionStateClasses()
             } else {
                 checkHardRedirects()
             }

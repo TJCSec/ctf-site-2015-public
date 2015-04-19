@@ -59,12 +59,6 @@ def config_app(*args, **kwargs):
     api.logger.setup_logs({"verbose": 2})
     return app
 
-def quick_cookie(response, key, value):
-    if value and request.cookies.get(key) != 'true':
-        response.set_cookie(key, 'true')
-    elif not value and key in request.cookies:
-        response.set_cookie(key, '', expires=0)
-
 @app.after_request
 def after_request(response):
     response.headers.add('Access-Control-Allow-Methods', 'GET, POST')
@@ -80,9 +74,6 @@ def after_request(response):
             csrf_token = api.common.token()
             session['token'] = csrf_token
             response.set_cookie('token', csrf_token)
-
-    quick_cookie(response, 'logged_in', logged_in)
-    quick_cookie(response, 'competition_active', api.utilities.check_competition_active())
 
     # JB: This is a hack. We need a better solution
     if request.path[0:19] != "/api/autogen/serve/":
