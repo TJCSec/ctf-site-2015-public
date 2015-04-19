@@ -147,6 +147,8 @@ jQuery(function($) {
     var achievementDesc = achievementInfo.find('#achievement-description')
     var pid = info.find('#pid')
 
+    var problemTemplate = Handlebars.compile($('#problem-template').html())
+
     function categoryToClass(category) {
         return category.toLowerCase().replace(' ', '-')
     }
@@ -202,12 +204,11 @@ jQuery(function($) {
     }
 
     function showProblem(problem) {
-        problemName.text(problem.name)
-        problemValue.text(problem.score+'')
-        problemDesc.html(problem.description)
-        pid.val(problem.pid)
+        var html = problemTemplate({problem: problem})
 
-        $.featherlight(info)
+        var featherbox = $.featherlight(html).$instance
+        featherbox.find('#problem-form').on('submit', submitFlagEvent)
+        featherbox.find('input[type="text"]').focus()
     }
 
     function showAchievement(achievement, config) {
@@ -239,20 +240,25 @@ jQuery(function($) {
             })
     }
 
-    form.on('submit', function(e) {
+    function submitFlagEvent(e) {
         e.preventDefault()
 
-        var currentFormFields = $.featherlight.current().$instance.find('#problem-form input')
+        var featherbox = $.featherlight.current().$instance
+
+        var currentFormFields = featherbox.find('#problem-form input')
+        var currentButton = featherbox.find('button')
 
         tjctf.apiQuery('POST', '/api/problems/submit', currentFormFields.serialize())
             .done(function(data) {
-                tjctf.notify(data)
                 if (data.status) {
                     $.featherlight.close()
+                    tjctf.notify(data)
+                } else {
+                    currentButton.notify(data)
                 }
                 showNewAchievements()
             })
-    })
+    }
 
     tjctf.apiQuery('GET', '/api/problems')
         .done(function(json) {

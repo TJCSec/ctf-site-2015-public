@@ -4,24 +4,33 @@ layout: default
 post_scripts:
     - //rawgit.com/Strikeskids/pcg-random/patch-1/pcg-random.js
     - //cdn.rawgit.com/noelboss/featherlight/1.2.3/release/featherlight.min.js
+    - //cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.1/handlebars.min.js
     - /js/problems.js
 stylesheets:
     - //cdn.rawgit.com/noelboss/featherlight/1.2.3/release/featherlight.min.css
 redirects:
     - not_logged_in
 ---
-<div id="problem-info">
-    <div class="problem-head">
-        <h2 id="problem-name"></h2>
-        <h3 id="problem-value"></h3>
-    </div>
-    <div id="problem-description"></div>
+{% raw %}
+<script id="problem-template" type="text/x-handlebars-template">
     <form id="problem-form">
-        <input type="text" name="flag" id="flag" />
-        <input type="hidden" name="pid" id="pid" />
-        <button type="submit" id="submit-flag">Submit</button>
+        <div class="problem-popup-info">
+            <div class="problem-head">
+                <h2 class="problem-name">{{ problem.name }}</h2>
+                <h3 class="problem-value">{{ problem.category }} &mdash; {{ problem.score }}</h3>
+            </div>
+            <div class="problem-description">
+                {{{ problem.description }}}
+            </div>
+            <div class="problem-submit">
+                <input type="text" name="flag" id="flag-box" />
+                <input type="hidden" name="pid" value="{{ problem.pid }}" />
+                <button type="submit">Submit</button>
+            </div>
+        </div>
     </form>
-</div>
+</script>
+{% endraw %}
 <div id="achievement-info">
     <img id="achievement-image" />
     <div id="achievement-data">
