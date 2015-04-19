@@ -24,11 +24,13 @@ $problem-list-pad: 0.5em;
 
 $problem-grid-height: 500px;
 
+$problem-done: #389C17;
+
 $problem-types: (
-    web-exploitation: red,
-    cryptography: blue,
-    binary-exploitation: orange,
-    forensics: yellow,
-    reverse-engineering: purple,
-    miscellaneous: blue-green
+    web-exploitation: #5021DD,
+    cryptography: #AE21DD,
+    binary-exploitation: #DD2150,
+    forensics: #DD21AE,
+    reverse-engineering: #DD5021,
+    miscellaneous: #DDAE21,
 );
