@@ -43,6 +43,17 @@ redirects:
         </table>
     </div>
 </script>
+<script id="problem-grid-template" type="text/x-handlebars-template">
+    {{#each this }}
+        <div data-pid="{{ pid }}" class="problem{{#if solved }} solved{{/if}} {{ categoryClass }}"
+            style="top: {{ rect.y }}px; left: {{ rect.x }}px; width: {{ rect.w }}px; height: {{ rect.h }}px;"></div>
+    {{/each}}
+</script>
+<script id="problem-list-template" type="text/x-handlebars-template">
+    {{#each this }}
+        <li data-pid="{{ pid }}" class="problem{{#if solved }} solved{{/if}} {{ categoryClass }}">{{ name }}<span class="points">{{ score }}</span></li>
+    {{/each}}
+</script>
 {% endraw %}
 <div id="problem-grid"></div>
 <ul id="problem-list"></ul>

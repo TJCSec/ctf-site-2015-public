@@ -143,6 +143,8 @@ jQuery(function($) {
 
     var problemTemplate = Handlebars.compile($('#problem-template').html())
     var achievementTemplate = Handlebars.compile($('#achievement-template').html())
+    var problemGridTemplate = Handlebars.compile($('#problem-grid-template').html())
+    var problemListTemplate = Handlebars.compile($('#problem-list-template').html())
 
     function categoryToClass(category) {
         return category.toLowerCase().replace(' ', '-')
@@ -158,39 +160,20 @@ jQuery(function($) {
             problems[i].rect = rect
         })
 
+        tjctf.pids = tjctf.pids || {}
+
         problems.forEach(function(problem) {
-            var gridded = $('<div>')
-                .css({
-                    left: problem.rect.x,
-                    top: problem.rect.y,
-                    width: problem.rect.w,
-                    height: problem.rect.h,
-                })
-                .addClass(problem.solved ? 'solved' : '')
-                .addClass(categoryToClass(problem.category))
-                .addClass('problem')
-
-            var listed = $('<li>')
-                .addClass(categoryToClass(problem.category))
-                .addClass(problem.solved ? 'solved' : '')
-                .addClass('problem')
-                .text(problem.name)
-
-            var listPoints = $('<span>')
-                .addClass('points')
-                .text(problem.score)
-
-            listed.append(listPoints)
-
-            gridded.data('problem', problem)
-            listed.data('problem', problem)
-
-            grid.append(gridded)
-            list.append(listed)
+            tjctf.pids[problem.pid] = problem
+            problem.categoryClass = categoryToClass(problem.category)
         })
 
-        $().add(list).add(grid).children('.problem').on('click', function(e) {
-            var problem = $(e.currentTarget).data('problem')
+        list.html(problemListTemplate(problems))
+        grid.html(problemGridTemplate(problems))
+
+        var problemBoxes = $().add(list).add(grid).children('.problem')
+
+        problemBoxes.on('click', function(e) {
+            var problem = tjctf.pids[$(e.currentTarget).data('pid')]
 
             if (problem && !problem.disabled) {
                 showProblem(problem)
