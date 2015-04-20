@@ -49,19 +49,8 @@ api.team.max_team_users = 5
 # Teams to display on scoreboard graph
 api.stats.top_teams = 5
 
-# start and end times!
-class EST(datetime.tzinfo):
-    def __init__(self, utc_offset):
-        self.utc_offset = utc_offset
-
-    def utcoffset(self, dt):
-      return datetime.timedelta(hours=-self.utc_offset)
-
-    def dst(self, dt):
-        return datetime.timedelta(0)
-
-start_time = datetime.datetime(2000, 10, 27, 12, 13, 0, tzinfo=EST(4))
-end_time = datetime.datetime(2055, 11, 7, 23, 59, 59, tzinfo=EST(5))
+start_time = datetime.datetime(2015, 4, 25, 16, 0, 0)
+end_time = datetime.datetime(2015, 4, 29, 3, 59, 59)
 
 # Root directory of all problem graders
 api.problem.grader_base_path = "./graders"
