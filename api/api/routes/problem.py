@@ -34,7 +34,7 @@ def submit_key_hook():
     tid = user_account['tid']
     uid = user_account['uid']
     pid = request.form.get('pid', '')
-    key = request.form.get('key', '')
+    key = request.form.get('flag', '')
     ip = request.remote_addr
 
     result = api.problem.submit_key(tid, pid, key, uid, ip)
