@@ -1,9 +1,17 @@
+@import "vars";
+
+body {
+    margin-bottom: $footer-height + 2 * $footer-padding;
+}
+
 footer {
     @include radial-gradient(at 50% top, #0B6382 0%, #020C10 150%);
     width: 100%;
 
-    margin-top: 30px;
     padding: 5px 0;
+
+    position: absolute;
+    bottom: 0;
 }
 
 .footer-content {
