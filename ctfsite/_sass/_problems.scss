@@ -59,6 +59,11 @@
     }
 }
 
+.featherlight-content {
+    overflow: visible !important;
+    min-width: 550px !important;
+}
+
 #achievement-info {
     @extend .featherlight-content-source;
     max-width: em(700px);
