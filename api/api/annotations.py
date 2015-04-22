@@ -44,6 +44,36 @@ def log_action(f):
 
     return wrapper
 
+def log_submission(f):
+    """
+    Logs submission for achievements
+    """
+
+    @wraps(f)
+    def wrapper(*args, **kwds):
+        """
+        Contextual information from the submission function
+        """
+        tid = args[0]
+        pid = args[1]
+        key = args[2]
+        uid = args[3]
+
+        ffile = open("/home/vagrant/api/submission_log.txt","a")
+        ffile.write("Flag: "+key+"\n")
+        ffile.write("TID: "+tid+"\n")
+        ffile.write("UID: "+uid+"\n")
+        ffile.write("\n")
+        ffile.close()
+
+        print(key)
+        print(f)
+        result = f(*args, **kwds)
+        print(result)
+        return result
+    return wrapper
+        
+
 def api_wrapper(f):
     """
     Wraps api routing and handles potential exceptions
