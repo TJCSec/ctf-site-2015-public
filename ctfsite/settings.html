@@ -34,10 +34,17 @@ redirects:
         {{/each}}
     </table>
 </script>
+<script id="shell-access-template" type="text/x-handlebars-template">
+<p><code>ssh {{ username }}@{{ hostname }} -p {{ port }}</code></p>
+<p>Password: <code>{{ password }}</code></p>
+</script>
 {% endraw %}
 
 <div id="team-settings">
     <div id="team-box">
+    </div>
+    <div id="shell-access">
+        <button id="shell-show-info">Show shell information</button>
     </div>
     <h2>Achievements</h2>
     <div id="achievement-box">
