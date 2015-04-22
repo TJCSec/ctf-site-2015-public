@@ -60,17 +60,10 @@ def log_submission(f):
         uid = args[3]
 
         ffile = open("/home/vagrant/api/submission_log.txt","a")
-        ffile.write("Flag: "+key+"\n")
-        ffile.write("TID: "+tid+"\n")
-        ffile.write("UID: "+uid+"\n")
-        ffile.write("\n")
+        ffile.write("Flag: "+key+"\nTID: "+tid+"\nUID: "+uid+"\n\n")
         ffile.close()
 
-        print(key)
-        print(f)
-        result = f(*args, **kwds)
-        print(result)
-        return result
+        return f(*args, **kwds)
     return wrapper
         
 
