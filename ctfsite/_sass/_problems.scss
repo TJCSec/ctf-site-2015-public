@@ -79,6 +79,14 @@
 .problem-popup-info {
     max-width: em(700px);
 
+    & > * {
+        margin-bottom: 0.5em;
+    }
+
+    & > *:last-child {
+        margin-bottom: 0;
+    }
+
     .problem-head {
         @include row;
 
@@ -93,8 +101,36 @@
         }
     }
 
-    .problem-description {
-        margin: 0.5em 0;
+    .problem-hint {
+        position: relative;
+
+        .hint-hidden-box, &:after {
+            @include transition( opacity 0.5s );
+        }
+
+        .hint-hidden-box {
+            opacity: 0;
+        }
+
+        &:after {
+            opacity: 1;
+
+            position: absolute;
+            top: 0;
+            left: 0;
+            content: 'Hover to show hint';
+            font-weight: bold;
+        }
+    }
+
+    .problem-hint:hover {
+        .hint-hidden-box {
+            opacity: 1;
+        }
+
+        &:after {
+            opacity: 0;
+        }
     }
 
     .problem-submit {
