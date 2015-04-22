@@ -3,7 +3,7 @@
 import json, traceback
 import api
 
-from api.common import WebSuccess, WebError, WebException, InternalException, SevereInternalException
+from api.common import WebSuccess, WebError, WebException, InternalException, SevereInternalException, get_conn
 from datetime import datetime
 from functools import wraps
 from flask import session, request, abort
@@ -43,6 +43,30 @@ def log_action(f):
         return log_information["result"]
 
     return wrapper
+
+def log_submission(f):
+    """
+    Logs submission for achievements
+    """
+
+    @wraps(f)
+    def wrapper(*args, **kwds):
+        """
+        Contextual information from the submission function
+        """
+        doc = {
+            'tid' : args[0],
+            'pid' : args[1],
+            'key' : args[2],
+            'uid' : args[3],
+        }
+        
+        db = get_conn()
+        db.submitlog.insert(doc)
+
+        return f(*args, **kwds)
+    return wrapper
+        
 
 def api_wrapper(f):
     """
