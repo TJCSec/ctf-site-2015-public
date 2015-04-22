@@ -79,6 +79,14 @@
 .problem-popup-info {
     max-width: em(700px);
 
+    & > * {
+        margin-bottom: 0.5em;
+    }
+
+    & > *:last-child {
+        margin-bottom: 0;
+    }
+
     .problem-head {
         @include row;
 
