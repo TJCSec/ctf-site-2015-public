@@ -228,13 +228,9 @@ jQuery(function($) {
             .done(function(data) {
                 if (data.status) {
                     $.featherlight.close()
-                    console.log(data)
                     tjctf.notify(data)
                 } else {
-                    currentButton.notify(data.message, {
-                        position: "bottom-right",
-                        className: "error",
-                    })
+                    currentButton.apiNotify(data)
                 }
                 showNewAchievements()
             })
