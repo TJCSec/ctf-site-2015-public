@@ -145,6 +145,22 @@ def add_new_achievements(args):
     if check_files_exist(args.files):
         insert_objects(api.achievement.insert_achievement, args.files)
 
+def add_specific_achievement(args):
+    aid = api.achievement.get_achievement(name='default')['aid']
+
+    tid = api.user.get_user(uid=args.uid)['tid']
+    data = {
+        'tid': tid,
+        'uid': args.uid,
+        'name': args.name,
+        'description': args.description,
+    }
+
+    if 'image' in args and args.image:
+        data['image'] = args['image']
+
+    api.achievement.insert_earned_achievement(aid, data)
+
 
 def load_problems(args):
     problem_dir = args.problems_directory[0]
@@ -251,6 +267,13 @@ def main():
     # Achievements
     parser_achievements = subparser.add_parser('achievements', help='Deal with Achievements')
     subparser_achievements = parser_achievements.add_subparsers(help='Select one of the following actions')
+
+    parser_achievements_add = subparser_achievements.add_parser('add', help='Add a specific achievement to a team')
+    parser_achievements_add.add_argument('uid', help='User id to add achievement on')
+    parser_achievements_add.add_argument('name', help='Name of achievement to add')
+    parser_achievements_add.add_argument('description', help='Description of achievement to add')
+    parser_achievements_add.add_argument('-i', '--image', dest='image', help='Replace image for achievement', default=None)
+    parser_achievements_add.set_defaults(func=add_specific_achievement)
 
     parser_achievements_load = subparser_achievements.add_parser('load', help='Load new achievements into the database')
     parser_achievements_load.add_argument("files", nargs="+", help="Files containing achievements to insert.")

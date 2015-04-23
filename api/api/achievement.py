@@ -194,10 +194,7 @@ def get_earned_achievements_display(tid=None, uid=None):
     for instance_achievement in instance_achievements:
         achievement = get_achievement(aid=instance_achievement["aid"])
 
-        #Make sure not to override name or description.
-        achievement.pop("name")
-        achievement.pop("description")
-
+        achievement.update(instance_achievement)
         instance_achievement.update(achievement)
 
         #Make sure to remove sensitive data

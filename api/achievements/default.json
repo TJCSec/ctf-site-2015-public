@@ -1,0 +1,10 @@
+{
+    "name": "default",
+    "description": "This is the default achievement",
+    "event": "submit",
+    "hidden": false,
+    "score": 10,
+    "processor": "default/never.py",
+    "image": "/img/achievements/silver.png",
+    "smallimage": "/img/achievements/silver_unlock.png"
+}
