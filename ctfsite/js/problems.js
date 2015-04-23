@@ -241,4 +241,6 @@ jQuery(function($) {
             tjctf.problems = json.data
             loadProblems(tjctf.problems)
         })
+
+    showNewAchievements()
 })
