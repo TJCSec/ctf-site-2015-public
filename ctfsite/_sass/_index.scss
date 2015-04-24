@@ -40,8 +40,8 @@
     @extend .section;
 
     .sponsor {
-        @include span-columns(6);
-        @include omega(2n);
+        margin: 0 auto;
+        display: block;
         padding: 10px;
     }
 }
