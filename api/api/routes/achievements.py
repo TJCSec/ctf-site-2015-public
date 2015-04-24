@@ -13,7 +13,7 @@ blueprint = Blueprint("achievements_api", __name__)
 @api_wrapper
 def get_achievements_hook():
     tid = api.user.get_team()["tid"]
-    achievements = api.achievement.get_earned_achievements_display(tid=tid)
+    achievements = api.achievement.get_earned_achievements(tid=tid)
 
     for achievement in achievements:
         achievement["timestamp"] = None  # JB : Hack to temporarily fix achievements timestamp problem
