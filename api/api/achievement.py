@@ -176,32 +176,6 @@ def set_earned_achievements_seen(tid=None, uid=None):
 
     db.earned_achievements.update(match, {"$set": {"seen": True}}, multi=True)
 
-def get_earned_achievements_display(tid=None, uid=None):
-    """
-    Gets the achievement display for a given user/team.
-    Includes instance specific information.
-
-    Args:
-        tid: The team id
-        tid: The user id
-    Returns:
-        A list of enabled achievements the team has earned.
-    """
-
-    instance_achievements = get_earned_achievement_instances(tid=tid, uid=uid)
-    set_earned_achievements_seen(tid=tid, uid=uid)
-
-    for instance_achievement in instance_achievements:
-        achievement = get_achievement(aid=instance_achievement["aid"])
-
-        achievement.update(instance_achievement)
-        instance_achievement.update(achievement)
-
-        #Make sure to remove sensitive data
-        instance_achievement.pop("data", None)
-
-    return instance_achievements
-
 def get_earned_achievements(tid=None, uid=None):
     """
     Gets the solved achievements for a given team or user.
@@ -217,7 +191,9 @@ def get_earned_achievements(tid=None, uid=None):
     set_earned_achievements_seen(tid=tid, uid=uid)
 
     for achievement in achievements:
-        achievement.update(get_achievement(aid=achievement["aid"]))
+        base = get_achievement(aid=achievement["aid"])
+        base.update(achievement)
+        achievement.update(base)
         achievement.pop("data")
 
     return achievements
