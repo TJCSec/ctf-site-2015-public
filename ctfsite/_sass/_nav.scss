@@ -36,10 +36,10 @@ header {
             li {
                 float: left;
                 list-style-type: none;
-                margin-right: 40px;
+                margin-right: $header-nav-link-spacing;
                 a {
                     @extend h1.main-title;
-                    font-size: 30px;
+                    font-size: $header-nav-link-size;
                 }
             }
         }

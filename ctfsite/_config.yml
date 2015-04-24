@@ -11,6 +11,9 @@ menu:
     -
         text: Scoreboard
         href: /scoreboard
+    -
+        text: Chat
+        href: https://webchat.freenode.net/?channels=tjctf
     - 
         text: About
         href: /about
