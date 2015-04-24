@@ -18,6 +18,8 @@
     }
 }
 
+
+
 .problem-types {
     @extend .section;
 
@@ -38,7 +40,8 @@
     @extend .section;
 
     .sponsor {
-        @include span-columns(3);
-        @include omega(4n);
+        @include span-columns(6);
+        @include omega(2n);
+        padding: 10px;
     }
 }
