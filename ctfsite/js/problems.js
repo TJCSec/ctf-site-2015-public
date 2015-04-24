@@ -230,7 +230,9 @@ jQuery(function($) {
                     $.featherlight.close()
                     tjctf.notify(data)
                 } else {
-                    currentButton.apiNotify(data)
+                    currentButton.apiNotify(data,null,{
+                        position: "bottom-right",
+                    })
                 }
                 showNewAchievements()
             })
