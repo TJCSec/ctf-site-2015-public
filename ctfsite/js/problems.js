@@ -220,6 +220,7 @@ jQuery(function($) {
         e.preventDefault()
 
         var featherbox = $.featherlight.current().$instance
+        var currentPid = featherbox.find('#pid').val()
 
         var currentFormFields = featherbox.find('#problem-form input')
         var currentButton = featherbox.find('button')
@@ -229,6 +230,7 @@ jQuery(function($) {
                 if (data.status) {
                     $.featherlight.close()
                     tjctf.notify(data)
+                    $('.problem[data-pid="' + currentPid + '"]').addClass('solved')
                 } else {
                     currentButton.apiNotify(data,null,{
                         position: "bottom-right",
