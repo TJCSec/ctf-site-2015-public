@@ -10,6 +10,8 @@ jQuery(function($) {
     var resetFields = resetForm.find('input, select')
     var submitButton = resetForm.find('button[type="submit"]')
 
+    tokenField.val(token.substring(1))
+
     resetForm.on('submit', function(e) {
         e.preventDefault()
         tjctf.apiQuery('POST', '/api/user/confirm_password_reset', resetFields.serialize())
