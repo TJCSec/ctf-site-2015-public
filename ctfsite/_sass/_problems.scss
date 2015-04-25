@@ -64,6 +64,12 @@
     min-width: 550px !important;
 }
 
+.keys {
+	.key {
+        @include span-columns(2);
+    }
+}
+
 #achievement-info {
     @extend .featherlight-content-source;
     max-width: em(700px);
