@@ -36,7 +36,7 @@ $problem-done: #776;
 // $problem-color-base: #99C9FB #21BF97 #B186AC #4CA3A6 #9ABDD7 #8CB6FB;
 // $problem-color-base: #024C7F #44A062 #5BF2F4 #186FDE #0D766E #6878C0 #334775;
 // $problem-color-base: #D4B938 #5D3A9E #ED4402 #204522 #55D254 #F672AD #2888C6;
-$problem-color-base: #38ECD8 #F1CB3C #7DEE3D #69EC86 #ACE561 #D5E63C;
+$problem-color-base: #38ECD8 #F1CB3C #7DEE3D #85CDFF #ACE561 #D5E63C;
 
 $problem-types: (
     web-exploitation:           nth($problem-color-base, 1),
