@@ -1,0 +1,203 @@
+body {
+    margin: 0;
+}
+
+h1 {
+    font-family: "laconiclight", Arial, sans-serif;
+    font-size: 90px;
+    color: #78F8FF;
+    background: -webkit-linear-gradient(top, #78F8FF, #45E6FF);
+    background: linear-gradient(top, #78F8FF, #45E6FF);
+    -webkit-background-clip: text;
+    text-shadow: 0px 0px 8px #64C4C4;
+    margin: 0;
+}
+
+.hero {  /*I need a heeeeeroooooo to save me nowwwwww*/
+    height: 310px;
+    text-align: center;
+    overflow: hidden;
+    position: relative
+}
+
+.hero .background {  /*I need a heeeeerooooo to save my life*/
+    position: absolute;
+    width: 100%;
+    height: 600px;
+    z-index: -10000;
+    background: -webkit-radial-gradient(at 50% bottom, #0B6382 0%, #020C10 150%);;
+    background: radial-gradient(at 50% bottom, #0B6382 0%, #020C10 150%);
+}
+
+.hero .crt {  /*A hero will saaaave me just in tiiiiiime*/
+    position: absolute;
+    width: 100%;
+    height: 600px;
+    z-index: 10000;
+    background-image: url("../img/crt.png");
+    pointer-events: none;
+    opacity: 0.01;
+}
+
+.logo {
+    fill: #ff0000;
+    -webkit-filter: drop-shadow(0 0 3px #64C4C4 );
+    filter: drop-shadow(0 0 3px #64C4C4 );
+    width: 230px;
+    margin-top: 50px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    pointer-events: none;
+}
+
+
+#logoName {
+    position: relative;
+    top: -50px;
+    display:inline-block;
+
+}
+.giant-logo {
+    width: 1500px;
+    position: absolute;
+    top: -300px;
+    left: 50%;
+    right: 50%;
+    margin-left: -750px;
+    opacity: 0.02;
+    z-index: -9999;
+}
+
+.hero .info {
+    color: white;
+    font-family: "Oxygen Mono", sans-serif;
+    font-size: 16px;
+    padding: 0 10px;
+}
+
+.hero .info > div {
+    margin-bottom: 14px;
+}
+
+.hero .info .dates {
+    font-size: 19px;
+}
+
+.hero .info .description {
+    max-width: 475px;
+    display: inline-block;
+}
+
+.hero .info .email input {
+    margin-top: 14px;
+    background-color: #1A7A9D;
+    border: none;
+    outline: none;
+    font-family: "Oxygen Mono", sans-serif;
+    color: white;
+    height: 30px;
+    padding: 0 5px;
+    font-size: 16px;
+    border-radius: 0;
+}
+
+.hero .info .email input:focus {
+    outline: none;
+}
+.hero .info .email input[type="submit"] {
+    background-color: #3E92B2;
+}
+
+.hero .info .email input[type="submit"]:hover {
+    background-color: #4c9fbf;
+}
+
+.hero .info .email input[type="submit"]:active {
+    background-color: #3486A5;
+}
+
+.hero .info .email ::-webkit-input-placeholder {
+   color: white;
+}
+
+.hero .info .email :-moz-placeholder {
+   color: white;
+}
+
+.hero .info .email ::-moz-placeholder {
+   color: white;
+}
+
+.hero .info .email :-ms-input-placeholder {
+   color: white;
+}
+
+.main-content {
+    background: white;
+}
+
+.ui.header {
+    color: #17799B;
+}
+
+h2.ui.header {
+    font-size: 30px;
+    margin-top: 20px!important;
+}
+
+
+.main-content .questions h2 {
+    font-size: 23px;
+}
+
+.sponsors {
+    padding-top: 20px;
+}
+
+.sponsors img {
+    margin: 10px 30px!important;
+}
+
+#email {
+    transition-duration: 150ms;
+    transition-timing-function: ease-in;
+}
+.ui.button:focus {
+    box-shadow: none!important;
+}
+
+.information {
+    margin-top: 0px;
+    padding-left: 10%;
+    padding-right: 10%;
+    padding-top: 10px;
+}
+
+.large {
+    font-size: 2.7em !important;
+}
+
+.content {
+    padding-left:14px;
+    font-size: 16px;
+}
+
+.disabled {
+    color: #bbb;
+}
+
+.content > ul {
+	margin-bottom: 0px;
+	padding-bottom: 14px;
+}
+
+.content > ol {
+	margin-bottom: 0px;
+	padding-bottom: 14px;
+}
+
+.content li {
+	padding-left: 10px;
+}
